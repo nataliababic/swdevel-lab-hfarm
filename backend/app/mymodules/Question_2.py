@@ -6,13 +6,6 @@ import pandas as pd
 import os
 app = FastAPI()
 
-# Now we import updated_bologna.csv as traffic
-traffic = pd.read_csv('/app/app/updated_bologna.csv')
-
-# Convert 'Date' column to datetime with appropriate format for day/month
-traffic['Date'] = pd.to_datetime(traffic['Date'], format='%d/%m/%Y', errors='coerce')
-
-
 # we start defining the traffic_per_area function linking the name of each area to the number of visotors on the input day. 
 
 def traffic_per_area(traffic, target_date):
@@ -41,10 +34,6 @@ def traffic_per_area(traffic, target_date):
 
     return result
 
-# Usage
-# Replace 'your_data' with your DataFrame variable and 'desired_date' with the date you want to check
-date_result = traffic_per_area (traffic, "01/10")
-print(date_result)
 
 # Define the area with the highest affluence
 def highest_affluence(result): 
@@ -60,9 +49,6 @@ def highest_affluence(result):
 
     return 'The Area with the highest tourism affluence is {} with {} Forcasted Visitors'.format(max_area, mean_visitors)
 
-# Example usage
-date_result_max = highest_affluence (date_result)
-print (date_result_max)
 
 # Define the area with lowest affluence
 def lowest_affluence(result):
@@ -77,9 +63,3 @@ def lowest_affluence(result):
     mean_visitors = min_area_row['Forcasted_Visitors']
 
     return 'The Area with the lowest tourism affluence is {} with {} Forcasted Visitors'.format(min_area, mean_visitors)
-
-# Example usage
-date_result_min = lowest_affluence(date_result)
-print (date_result_min)
-
-## Possible tests 
