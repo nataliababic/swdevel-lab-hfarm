@@ -17,12 +17,16 @@ from enum import Enum
 from typing import Optional
 import os
 
+from typing import Tuple
+
+
+
 import sys
 sys.path.append('/app')  # Add the path to the project's base directory
 
-from app.mymodules.csv_cleaning import load_data, preprocess_data, process_durata_column, save_data
+from app.mymodules.csv_cleaning import load_data, preprocess_data, process_durata_column, save_data, convert_to_minutes
 from app.mymodules.Question_2 import traffic_per_area, highest_affluence, lowest_affluence
-
+from app.mymodules.funct1 import average_stay_length
 
 
 input_file_path = '/app/app/bologna.csv'
@@ -68,6 +72,18 @@ def read_root():
 
 from pydantic import BaseModel
 
+#QUESTION 1
+@app.get("/average-visitors/{area}/{stay_time}")
+def make_average(area: str, stay_time: str):
+
+    # Call the existing function from the module to get the average of visitors in that area for that amount of time
+    result = average_stay_length(traffic,area,stay_time)
+    
+    if isinstance(result, str):
+        # If the result is a string (indicating an error message), raise HTTPException
+        raise HTTPException(status_code=404, detail=result)
+    
+    return {"avg_total": result[0],"avg_holiday":result[1],"avg_non_holiday":result[2]}
 
 
 @app.get("/forecasted-visitors")
@@ -91,6 +107,7 @@ def forecasted_visitors_per_area(target_date: str):
     result_min = lowest_affluence(result)
 
     return result_dict, result_max, result_min
+
 
 '''
  How to use it 

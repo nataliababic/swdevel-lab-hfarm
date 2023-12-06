@@ -1,5 +1,5 @@
 import pandas as pd
-from mymodules.csv_cleaning import convert_to_minutes
+from app.mymodules.csv_cleaning import convert_to_minutes
 
 
 def average_stay_length(df, area, stay_time):
