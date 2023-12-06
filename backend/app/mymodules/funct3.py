@@ -21,8 +21,7 @@ for year in years:
 print(sorted(list(set(months2019))), sorted(list(set(months2020))), sorted(list(set(months2021))))
 '''
 
-def avg_comparison(year1, month1, year2, month2):
-    data = pd.read_csv("/app/app/updated_bologna.csv")
+def avg_comparison(data, year1, month1, year2, month2):
     filtered_dates=[]
     for elem in data['Date']:
         filtered_dates=filtered_dates+[elem[-7:]]
@@ -30,7 +29,8 @@ def avg_comparison(year1, month1, year2, month2):
     #print(data)
     avg_visitors1 = int(data[data['filtered_dates'] == f'{month1}/{year1}']['Visitors'].mean())
     avg_visitors2 = int(data[data['filtered_dates'] == f'{month2}/{year2}']['Visitors'].mean())
-    print(avg_visitors1)
-    print(avg_visitors2)
+    #print(avg_visitors1)
+    #print(avg_visitors2)
+    return (avg_visitors1, avg_visitors2)
 avg_comparison('2019', '07', '2021', '04')
 
