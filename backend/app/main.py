@@ -37,10 +37,10 @@ if not os.path.exists(output_file_path):
     traffic = load_data(input_file_path)
 
     # Preprocess data
-    traffic = preprocess_data(data)
+    traffic = preprocess_data(traffic)
 
     # Process Durata column
-    traffic = process_durata_column(data)
+    traffic = process_durata_column(traffic)
 
     # Save the updated data
     save_data(traffic, output_file_path)
@@ -70,7 +70,7 @@ from pydantic import BaseModel
 
 
 
-@app.get("/forecasted-visitors")
+@app.get("/forecasted-visitors/{target_date}")
 def forecasted_visitors_per_area(target_date: str):
 
     # Call the existing function to get forecasted visitors
@@ -94,7 +94,7 @@ def forecasted_visitors_per_area(target_date: str):
 
 '''
  How to use it 
-.../forecasted-visitors?target_date=01-10
+.../forecasted-visitors/01-10
 forcasted visitors is seen as the "branch" of our website
 taget_date is seen as an input, for this reaoson is considered as a quest ( we need to put ? and the expected result )
 '''
