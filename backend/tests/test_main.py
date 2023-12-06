@@ -1,19 +1,13 @@
 import os
 import sys
-from fastapi import FastAPI
-from fastapi import FastAPI
-from fastapi.responses import JSONResponse
-from datetime import datetime
 from fastapi.testclient import TestClient
-
 
 # Add the project root to the sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 # Now you can do the relative import
 from app.main import app
-from app.mymodules.birthdays import return_birthday, print_birthdays_str
-from app.main import birthdays_dictionary
+
+
 
 """
 Execute this test by running on the terminal (from the app/) the command:
@@ -21,6 +15,7 @@ pytest --cov=app --cov-report=html tests/
  """
 
 client = TestClient(app)
+
 
 def test_read_main():
     response = client.get("/")
@@ -54,6 +49,7 @@ def test_success_read_item_module():
     assert response.status_code == 200
     assert response.json() == ["Albert Einstein's birthday is 03/14/1879."]
 
+
 # Your smoke test code here for the function 'print_birthdays_str'
 def test_smoke_valid_input():
     #birth = print_birthdays_str(birthdays)
@@ -70,4 +66,5 @@ def test_smoke_valid_input():
 
 # Your corner case test code here for 'return_birthday'
 #def test_corner_case():
+
 
