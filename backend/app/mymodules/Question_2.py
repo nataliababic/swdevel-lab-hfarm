@@ -6,6 +6,7 @@ import pandas as pd
 import os
 app = FastAPI()
 
+
 # we start defining the traffic_per_area function linking the name of each area to the number of visotors on the input day. 
 
 def traffic_per_area(traffic, target_date):
@@ -22,7 +23,7 @@ def traffic_per_area(traffic, target_date):
 
     # Filter data for the years 2019, 2020, and 2021
     filtered_traffic = traffic[traffic['Date'].dt.year.isin([2019, 2020, 2021]) &
-                               (traffic['Date'].dt.strftime('%d/%m') == target_date)]
+                               (traffic['Date'].dt.strftime('%d-%m') == target_date)]
     
     #Return a message in case the date is not available 
     if filtered_traffic.empty:
