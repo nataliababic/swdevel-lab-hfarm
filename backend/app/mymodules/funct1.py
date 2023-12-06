@@ -1,9 +1,8 @@
 import pandas as pd
-from csv_cleaning import convert_to_minutes
+from mymodules.csv_cleaning import convert_to_minutes
 
-df = pd.read_csv('app/updated_bologna.csv', parse_dates=['Date'])
 
-def average_stay_length(area, stay_time):
+def average_stay_length(df, area, stay_time):
     if area not in df['Area'].unique():
         return "Invalid Area"
 
@@ -22,19 +21,4 @@ def average_stay_length(area, stay_time):
 
 
 
-    return f"The average number of visitors for {area} with a stay time around {stay_minutes} minutes is:\n- Total: {avg_tot}\n- Holiday: {avg_holiday}\n- Non-Holiday: {avg_non_holiday}"
-
-
-# Displaying the list of available areas
-area_list = df['Area'].unique()
-print("Available Areas:")
-for area in area_list:
-    print(area)
-
-# Taking user inputs
-selected_area = input("Enter the area: ")
-stay_time_input = input("Enter the desired stay time (e.g., 'from 5 to 10 min'): ")
-
-# Calculating and printing the result
-result = average_stay_length(selected_area, stay_time_input)
-print(result)
+    return (avg_tot, avg_holiday, avg_non_holiday)
