@@ -8,6 +8,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from app.main import app
 
 
+
 """
 Execute this test by running on the terminal (from the app/) the command:
 pytest --cov=app --cov-report=html tests/
@@ -47,3 +48,23 @@ def test_success_read_item_module():
     response = client.get("/module/search/Albert Einstein")
     assert response.status_code == 200
     assert response.json() == ["Albert Einstein's birthday is 03/14/1879."]
+
+
+# Your smoke test code here for the function 'print_birthdays_str'
+def test_smoke_valid_input():
+    #birth = print_birthdays_str(birthdays)
+    birth =  print_birthdays_str()
+    assert birth.status_code == 200
+    #self.assertEqual(birth,["Albert EinsteinBenjamin FranklinAda LovelaceDonald TrumpRowan Atkinson"])
+
+#["Albert EinsteinBenjamin FranklinAda LovelaceDonald TrumpRowan Atkinson"]
+
+
+# Your error entry test code here for 'return_birthday'
+#def test_error_entry():
+
+
+# Your corner case test code here for 'return_birthday'
+#def test_corner_case():
+
+
