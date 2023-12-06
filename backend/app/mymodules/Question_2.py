@@ -12,7 +12,6 @@ traffic = pd.read_csv('/app/app/updated_bologna.csv')
 # Convert 'Date' column to datetime with appropriate format for day/month
 traffic['Date'] = pd.to_datetime(traffic['Date'], format='%d/%m/%Y', errors='coerce')
 
-
 # we start defining the traffic_per_area function linking the name of each area to the number of visotors on the input day. 
 
 def traffic_per_area(traffic, target_date):
@@ -29,7 +28,7 @@ def traffic_per_area(traffic, target_date):
 
     # Filter data for the years 2019, 2020, and 2021
     filtered_traffic = traffic[traffic['Date'].dt.year.isin([2019, 2020, 2021]) &
-                               (traffic['Date'].dt.strftime('%d/%m') == target_date)]
+                               (traffic['Date'].dt.strftime('%d-%m') == target_date)]
     
     #Return a message in case the date is not available 
     if filtered_traffic.empty:
@@ -43,7 +42,7 @@ def traffic_per_area(traffic, target_date):
 
 # Usage
 # Replace 'your_data' with your DataFrame variable and 'desired_date' with the date you want to check
-date_result = traffic_per_area (traffic, "01/10")
+date_result = traffic_per_area (traffic, "01-10")
 print(date_result)
 
 # Define the area with the highest affluence
