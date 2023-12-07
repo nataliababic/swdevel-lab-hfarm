@@ -31,3 +31,4 @@ def avg_comparison(df, year1, month1, year2, month2):
     return (avg_visitors1, avg_visitors2)
 #avg_comparison('2019', '07', '2021', '04')
 
+
