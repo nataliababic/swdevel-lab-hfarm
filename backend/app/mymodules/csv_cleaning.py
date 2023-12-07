@@ -2,6 +2,7 @@ import pandas as pd
 import holidays
 import re
 
+
 def load_data(file_path):
     """Load data from a CSV file.
 
@@ -14,6 +15,7 @@ def load_data(file_path):
     data = pd.read_csv(file_path, sep=';')
     return data
 
+
 def save_data(data, output_file_path):
     """Save data to a CSV file.
 
@@ -22,6 +24,7 @@ def save_data(data, output_file_path):
     output_file_path (str): The path to save the CSV file.
     """
     data.to_csv(output_file_path, index=False)
+
 
 def is_holiday(date):
     """Check if a date is a holiday.
@@ -40,6 +43,7 @@ def is_holiday(date):
     except ValueError:
         return False
 
+
 def preprocess_data(data):
     """Preprocess the data.
 
@@ -52,13 +56,14 @@ def preprocess_data(data):
     Returns:
     DataFrame: Preprocessed DataFrame.
     """
-    data_copy = data.copy()  # Create a copy to avoid modifying the original DataFrame
+    data_copy = data.copy()
     data_copy['Date'] = pd.to_datetime(data_copy['Date'], dayfirst=True)
     data_copy['Holiday'] = data_copy['Date'].apply(is_holiday)
 
     # Shift 'Duration' to 'Visitors' column only for 2021
     mask_2021 = data_copy['Date'].dt.year == 2021
-    data_copy.loc[mask_2021, 'Visitors'] = pd.to_numeric(data_copy.loc[mask_2021, 'Duration'], errors='coerce')
+    selected_data = pd.to_numeric(data_copy.loc[mask_2021, 'Duration'])
+    data_copy.loc[mask_2021, 'Visitors'] = selected_data
 
     # Set 'Duration' to "0" only for 2021
     data_copy.loc[mask_2021, 'Duration'] = "0"
@@ -92,6 +97,7 @@ def convert_to_minutes(duration_str):
         return avg_value
     else:
         return 0
+
 
 def process_durata_column(data):
     """Process the Duration column to get average duration in minutes.
