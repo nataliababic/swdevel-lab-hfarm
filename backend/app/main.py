@@ -27,6 +27,7 @@ sys.path.append('/app')  # Add the path to the project's base directory
 from app.mymodules.csv_cleaning import load_data, preprocess_data, process_durata_column, save_data, convert_to_minutes
 from app.mymodules.Question_2 import traffic_per_area, highest_affluence, lowest_affluence
 from app.mymodules.funct1 import average_stay_length
+from app.mymodules.funct3 import avg_comparison
 
 
 input_file_path = '/app/app/bologna.csv'
@@ -85,7 +86,7 @@ def make_average(area: str, stay_time: str):
     
     return {"avg_total": result[0],"avg_holiday":result[1],"avg_non_holiday":result[2]}
 
-
+#QUESTION 2
 @app.get("/forecasted-visitors/{target_date}")
 def forecasted_visitors_per_area(target_date: str):
 
@@ -108,7 +109,13 @@ def forecasted_visitors_per_area(target_date: str):
 
     return result_dict, result_max, result_min
 
-
+#QUESTION 3
+@app.get("/average-period/{year1}/{month1}/{year2}/{month2}")
+def average_comparison(year1:str, month1:str, year2:str, month2:str):
+    result = avg_comparison(traffic, year1, month1, year2, month2)
+    
+    return {"average visitors in first period: ":result[0], 
+            "average visitors in second period: ":result[1]}
 '''
  How to use it 
 .../forecasted-visitors/01-10
