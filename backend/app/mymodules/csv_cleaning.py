@@ -1,6 +1,8 @@
 import pandas as pd
 import holidays
 import re
+from datetime import datetime
+
 
 def load_data(file_path):
     """Load data from a CSV file.
@@ -14,6 +16,7 @@ def load_data(file_path):
     data = pd.read_csv(file_path, sep=';')
     return data
 
+
 def save_data(data, output_file_path):
     """Save data to a CSV file.
 
@@ -23,22 +26,28 @@ def save_data(data, output_file_path):
     """
     data.to_csv(output_file_path, index=False)
 
+
 def is_holiday(date):
     """Check if a date is a holiday.
 
     Parameters:
-    date (str): The date in string format.
+    date (datetime): The date as a datetime object.
 
     Returns:
     bool: True if the date is a holiday or a weekend, False otherwise.
     """
+    if not isinstance(date, datetime):
+        return False  # Return False for any input that is not a datetime
+
     italy_holidays = holidays.Italy(years=[2019, 2020, 2021])
+
     try:
         is_weekend = date.weekday() >= 5  # Saturday or Sunday
         is_official_holiday = date in italy_holidays
         return is_weekend or is_official_holiday
-    except ValueError:
-        return False
+    except AttributeError:
+        return False  # Return False if error occurs during date operations
+
 
 def preprocess_data(data):
     """Preprocess the data.
@@ -52,13 +61,14 @@ def preprocess_data(data):
     Returns:
     DataFrame: Preprocessed DataFrame.
     """
-    data_copy = data.copy()  # Create a copy to avoid modifying the original DataFrame
+    data_copy = data.copy()
     data_copy['Date'] = pd.to_datetime(data_copy['Date'], dayfirst=True)
     data_copy['Holiday'] = data_copy['Date'].apply(is_holiday)
 
     # Shift 'Duration' to 'Visitors' column only for 2021
     mask_2021 = data_copy['Date'].dt.year == 2021
-    data_copy.loc[mask_2021, 'Visitors'] = pd.to_numeric(data_copy.loc[mask_2021, 'Duration'], errors='coerce')
+    selected_data = pd.to_numeric(data_copy.loc[mask_2021, 'Duration'])
+    data_copy.loc[mask_2021, 'Visitors'] = selected_data
 
     # Set 'Duration' to "0" only for 2021
     data_copy.loc[mask_2021, 'Duration'] = "0"
@@ -92,6 +102,7 @@ def convert_to_minutes(duration_str):
         return avg_value
     else:
         return 0
+
 
 def process_durata_column(data):
     """Process the Duration column to get average duration in minutes.
