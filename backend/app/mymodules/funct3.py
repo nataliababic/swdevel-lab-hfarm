@@ -1,5 +1,5 @@
 import pandas as pd
-from datetime import datetime
+
 '''
 data = pd.read_csv("/app/app/updated_bologna.csv")
 
@@ -21,16 +21,12 @@ for year in years:
 print(sorted(list(set(months2019))), sorted(list(set(months2020))), sorted(list(set(months2021))))
 '''
 
-def avg_comparison(data, year1, month1, year2, month2):
-    filtered_dates=[]
-    for elem in data['Date']:
-        filtered_dates=filtered_dates+[elem[-7:]]
-    data['filtered_dates']=pd.Series(filtered_dates)
-    #print(data)
-    avg_visitors1 = int(data[data['filtered_dates'] == f'{month1}/{year1}']['Visitors'].mean())
-    avg_visitors2 = int(data[data['filtered_dates'] == f'{month2}/{year2}']['Visitors'].mean())
-    #print(avg_visitors1)
-    #print(avg_visitors2)
+def avg_comparison(df, year1, month1, year2, month2):
+    #df = pd.read_csv("/app/app/updated_bologna.csv")
+    #df['Date'] = pd.to_datetime(df['Date'], format='%d/%m/%Y', errors='coerce')
+    
+    avg_visitors1 = int((df[(df['Date'].dt.strftime('%m') == month1) & (df['Date'].dt.strftime('%Y') == year1)]['Visitors']).mean())
+    avg_visitors2 = int((df[(df['Date'].dt.strftime('%m') == month2) & (df['Date'].dt.strftime('%Y') == year2)]['Visitors']).mean())
+    #diff_perc = ((avg_visitors2 - avg_visitors1) / avg_visitors1) * 100
     return (avg_visitors1, avg_visitors2)
-avg_comparison('2019', '07', '2021', '04')
-
+#avg_comparison('2019', '07', '2021', '04')
