@@ -1,6 +1,7 @@
 import pandas as pd
 import holidays
 import re
+from datetime import datetime
 
 
 def load_data(file_path):
@@ -30,18 +31,22 @@ def is_holiday(date):
     """Check if a date is a holiday.
 
     Parameters:
-    date (str): The date in string format.
+    date (datetime): The date as a datetime object.
 
     Returns:
     bool: True if the date is a holiday or a weekend, False otherwise.
     """
+    if not isinstance(date, datetime):
+        return False  # Return False for any input that is not a datetime
+
     italy_holidays = holidays.Italy(years=[2019, 2020, 2021])
+
     try:
         is_weekend = date.weekday() >= 5  # Saturday or Sunday
         is_official_holiday = date in italy_holidays
         return is_weekend or is_official_holiday
-    except ValueError:
-        return False
+    except AttributeError:
+        return False  # Return False if error occurs during date operations
 
 
 def preprocess_data(data):
