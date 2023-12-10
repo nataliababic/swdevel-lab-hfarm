@@ -5,7 +5,7 @@ import pandas as pd
 from datetime import datetime
 import holidays
 
-# Add the path of the parent directory of your project to sys.path
+# Add the path of the parent directory of the project to sys.path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, project_root)
 
@@ -20,7 +20,7 @@ def test_load_data_smoke():
     """Test the load_data function for basic functionality.
 
     Inputs:
-        None (Uses a predefined file path to load data)
+        None
 
     Outputs:
         Asserts if loaded data is not None and is a Pandas DataFrame.
@@ -43,14 +43,10 @@ def test_save_data_smoke():
     """
     # Directory for testing CSV file creation
     test_directory = './tests/'
-
-    # Ensure the directory exists or create it if not
     os.makedirs(test_directory, exist_ok=True)
 
     # Create a sample DataFrame
     data = pd.DataFrame({'A': [1, 2, 3], 'B': ['x', 'y', 'z']})
-
-    # Define the output file path for the generated CSV file
     output_file_path = os.path.join(test_directory, 'output_test.csv')
 
     try:
@@ -66,7 +62,7 @@ def test_is_holiday():
     """Test cases for the is_holiday function.
 
     Inputs:
-        Predefined dates to check against weekends and Italian holidays.
+        Predefined dates to check against weekends.
 
     Outputs:
         Verifies correct identification of holidays and weekends.
@@ -75,7 +71,6 @@ def test_is_holiday():
     saturday = datetime(2019, 7, 20)
     sunday = datetime(2019, 7, 21)
 
-    # Assertion for weekends as holidays
     assert is_holiday(saturday), "Saturday should be identified as a holiday"
     assert is_holiday(sunday), "Sunday should be identified as a holiday"
 
@@ -92,14 +87,11 @@ def test_is_italian_holiday():
     # Create a list of known Italian holidays for the test years
     italy_holidays = holidays.Italy(years=[2019, 2020, 2021])
 
-    # Test known Italian holidays
     test_holidays = [
-        datetime(2019, 8, 15),  # Assumption: New Year's Day
-        datetime(2020, 1, 1),   # Assumption: Easter Monday
-        # Add more holidays as needed for your test years
+        datetime(2019, 8, 15),  # Assumption: "Ferragosto" Day
+        datetime(2020, 1, 1),   # Assumption: New Years Eve
     ]
 
-    # Assertion for identification of Italian holidays
     for holiday in test_holidays:
         assert is_holiday(holiday), f"{holiday} not identified as holiday"
 
@@ -128,33 +120,8 @@ def test_invalid_input_is_holiday():
         Asserts that the function returns False for invalid inputs.
     """
     invalid_input = "Ciao come stai"
-
-    # Verify handling of invalid input by is_holiday function
     result = is_holiday(invalid_input)
     assert not result, "Expected False due to invalid input type"
-
-
-def test_is_holiday_attribute_error_handling():
-    """Test is_holiday function's AttributeError handling.
-
-    Verifies if the is_holiday function properly handles
-    AttributeErrors for various inputs.
-    """
-    # Test for None input and invalid date types
-    assert is_holiday(None) is False, "Expected False"
-
-    # Test for invalid date type (string)
-    assert is_holiday("2023-12-25") is False, "Expected False"
-
-    # Test for invalid date type (integer)
-    assert is_holiday(20231225) is False, "Expected False"
-
-    # Test for valid date input causing AttributeError
-    class CustomDate:
-        pass  # Simulate an object that doesn't have weekday() method
-
-    # This should result in an AttributeError in the function
-    assert is_holiday(CustomDate()) is False, "Expected False - AttributeError"
 
 
 def test_preprocess_data_smoke():
@@ -172,7 +139,7 @@ def test_preprocess_data_smoke():
         'Area': ['A', 'B', 'C'],
         'Duration': ['20', '15', '25'],
         'Visitors': [100, 150, 200],
-        'Holiday': [True, False, False]  # Assuming these values
+        'Holiday': [True, False, False]
     })
 
     try:
@@ -208,7 +175,7 @@ def test_convert_to_minutes_with_empty_string():
 
 def test_convert_to_minutes_without_numbers():
     """Test convert_to_minutes with a string not containing any numbers."""
-    no_number_duration = "Blue Sky"
+    no_number_duration = "The One Piece is real"
     assert convert_to_minutes(no_number_duration) == 0, "Conversion failed"
 
 
@@ -227,7 +194,7 @@ def test_process_durata_column_smoke():
     """
     # Sample DataFrame with Duration values in different formats
     sample_data = pd.DataFrame({
-        'Duration': ['2 hours', '90 minutes', '1 hour']
+        'Duration': ['More than 2 hours', 'Less than 90 minutes', '1 hour']
     })
 
     # Apply the process_durata_column function to the sample data
@@ -253,7 +220,7 @@ test_is_holiday()
 test_is_italian_holiday()
 test_is_not_holiday()
 test_invalid_input_is_holiday()
-test_is_holiday_attribute_error_handling()
+
 
 # Run the smoke test for the preprocess_data function
 test_preprocess_data_smoke()

@@ -28,7 +28,7 @@ def save_data(data, output_file_path):
 
 
 def is_holiday(date):
-    """Check if a date is a holiday.
+    """Check if a date is a holiday in Italy.
 
     Parameters:
     date (datetime): The date as a datetime object.
@@ -52,6 +52,7 @@ def is_holiday(date):
 def preprocess_data(data):
     """Preprocess the data.
 
+    Add the Holiday column.
     Shifts 'Duration' values to 'Visitors' column for the year 2021.
     Sets 'Duration' to "0" for the year 2021.
 
@@ -73,18 +74,19 @@ def preprocess_data(data):
     # Set 'Duration' to "0" only for 2021
     data_copy.loc[mask_2021, 'Duration'] = "0"
 
-    # Convert 'Duration' column to integer
     data_copy["Visitors"] = data_copy["Visitors"].fillna(0).astype(int)
 
     data_copy = data_copy.sort_values(by="Date", ascending=True)
     data_copy['Date'] = data_copy['Date'].dt.strftime('%d/%m/%Y')
+
+    # Set 'Visitors' < "0" to "0".
     data_copy.loc[data_copy['Visitors'] < 0, 'Visitors'] = 0
 
     return data_copy
 
 
 def convert_to_minutes(duration_str):
-    """Convert duration strings to minutes.
+    """Convert strings containing the duration to minutes.
 
     Parameters:
     duration_str (str): The duration string.
@@ -92,7 +94,7 @@ def convert_to_minutes(duration_str):
     Returns:
     int: Duration in minutes.
     """
-    pattern = r'\d+'
+    pattern = r'\d+'  # Pattern to match consecutive digits in a string
     values = re.findall(pattern, duration_str)
     if values:
         values = [int(val) for val in values]
@@ -111,7 +113,7 @@ def process_durata_column(data):
     data (DataFrame): The input DataFrame.
 
     Returns:
-    DataFrame: DataFrame with the new Duration added.
+    DataFrame: DataFrame with the new Duration.
     """
     data['Duration'] = data['Duration'].apply(convert_to_minutes)
     return data
