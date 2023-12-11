@@ -18,7 +18,7 @@ def traffic_per_area(traffic, target_date):
     target_date (str): The date in 'YYYY-MM-DD' format.
 
     Returns:
-    DataFrame: DataFrame with the total visitors per area for the given date.
+    Result: DataFrame with the total visitors per area for the given date.
     '''
 
     # Filter data for the years 2019, 2020, and 2021
@@ -40,7 +40,8 @@ def traffic_per_area(traffic, target_date):
 def highest_affluence(result): 
 
     '''
-    Inout: date given in  traffic_per_area function
+    Input: Result (DataFrame), the total visitors per area Fataframe created in traffic_per_area function
+
     Output : the area with the maximum amount of visitors 
     '''
 
@@ -55,8 +56,9 @@ def highest_affluence(result):
 def lowest_affluence(result):
 
     '''
-    Inout: date given in  traffic_per_area function
-    Output : the area with the maximum amount of visitors 
+    Input: Result (DataFrame), the total visitors per area Fataframe created in traffic_per_area function
+
+    Output : the area with the manimum amount of visitors 
     '''
 
     min_area_row = result.loc[result['Forcasted_Visitors'].idxmin()]
