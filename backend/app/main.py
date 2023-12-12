@@ -76,15 +76,15 @@ from pydantic import BaseModel
 #QUESTION 1
 @app.get("/average-visitors/{area}/{stay_time}")
 def make_average(area: str, stay_time: str):
-
+    print(area, stay_time)
     # Call the existing function from the module to get the average of visitors in that area for that amount of time
     result = average_stay_length(traffic,area,stay_time)
     
     if isinstance(result, str):
         # If the result is a string (indicating an error message), raise HTTPException
         raise HTTPException(status_code=404, detail=result)
-    
-    return {"avg_total": result[0],"avg_holiday":result[1],"avg_non_holiday":result[2]}
+    print(result)
+    return  JSONResponse(content={"avg_total": result[0],"avg_holiday":result[1],"avg_non_holiday":result[2]})
 
 #QUESTION 2
 @app.get("/forecasted-visitors/{target_date}")
@@ -93,7 +93,7 @@ def forecasted_visitors_per_area(target_date: str):
     # Call the existing function to get forecasted visitors
     result = traffic_per_area(traffic, target_date)
 
-    # Check if the result is a messa ge indicating no data
+    # Check if the result is a message indicating no data
     if isinstance(result, str):
         raise HTTPException(status_code=404, detail=result)
 
@@ -107,15 +107,15 @@ def forecasted_visitors_per_area(target_date: str):
     # Create the result_min function
     result_min = lowest_affluence(result)
 
-    return result_dict, result_max, result_min
-
+    return  JSONResponse(content = {"Affluence of each area": result_dict,
+                                  "Highest affluence":result_max,
+                                  "Lowest affluence": result_min})
 #QUESTION 3
 @app.get("/average-period/{year1}/{month1}/{year2}/{month2}")
 def average_comparison(year1:str, month1:str, year2:str, month2:str):
     result = avg_comparison(traffic, year1, month1, year2, month2)
     
-    return {"average visitors in first period: ":result[0], 
-            "average visitors in second period: ":result[1]}
+    return  JSONResponse(content={"Avg first period": result[0],"Avg second period":result[1]})
 '''
  How to use it 
 .../forecasted-visitors/01-10
@@ -198,13 +198,10 @@ taget_date is seen as an input, for this reaoson is considered as a quest ( we n
     #return {print_birthdays_str()}
 
 
-#@app.get('/get-date')
-#def get_date():
- #   """
-#    Endpoint to get the current date.
-
-#    Returns:
-#        dict: Current date in ISO format.
-#    """
-#    current_date = datetime.now().isoformat()
-#    return JSONResponse(content={"date": current_date})
+@app.get('/get-date')
+def get_date():  
+    """
+    Endpoint to get the current date.   Returns:
+      dict: Current date in ISO format. """
+    current_date = datetime.now().isoformat()
+    return JSONResponse(content={"date": current_date})
