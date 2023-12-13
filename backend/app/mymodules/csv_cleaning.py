@@ -85,6 +85,8 @@ def preprocess_data(data):
     return data_copy
 
 
+import re
+
 def convert_to_minutes(duration_str):
     """Convert strings containing the duration to minutes.
 
@@ -94,6 +96,10 @@ def convert_to_minutes(duration_str):
     Returns:
     int: Duration in minutes.
     """
+    if duration_str == '0' or duration_str is None:
+        return 0
+    
+    duration_str = duration_str.lower()  # Convert the string to lowercase
     pattern = r'\d+'  # Pattern to match consecutive digits in a string
     values = re.findall(pattern, duration_str)
     if values:
@@ -104,6 +110,7 @@ def convert_to_minutes(duration_str):
         return avg_value
     else:
         return 0
+
 
 
 def process_durata_column(data):

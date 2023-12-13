@@ -1,7 +1,37 @@
 import pandas as pd
+import os
+import sys
+sys.path.append('/app')
+from app.mymodules.csv_cleaning import load_data, preprocess_data, process_durata_column, save_data
 
+input_file_path = './app/bologna.csv'
+output_file_path = './app/updated_bologna.csv'
 
-data = pd.read_csv("/app/app/updated_bologna.csv")
+def load_data():
+    """Load processed data from a CSV file if it exists, else generate it.
+
+    Returns:
+    DataFrame: Processed data.
+    """
+    # Check if the output file exists; if not, create it
+    if not os.path.exists(output_file_path):
+        # Load data
+        traffic = pd.read_csv(input_file_path, sep=";")
+        
+        # Preprocess data
+        traffic = preprocess_data(traffic)
+        
+        # Process Durata column
+        traffic = process_durata_column(traffic)
+        
+        # Save the updated data
+        save_data(traffic, output_file_path)
+
+    # Load the processed data
+    return pd.read_csv(output_file_path)
+
+# Load processed data from 'updated_bologna.csv' if it exists; otherwise, generate and load it from 'bologna.csv'
+data = load_data()
 years = ['2019', '2020', '2021']
 dates = data['Date']
 

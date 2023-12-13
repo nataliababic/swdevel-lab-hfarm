@@ -124,6 +124,30 @@ def test_invalid_input_is_holiday():
     assert not result, "Expected False due to invalid input type"
 
 
+def test_is_holiday_with_zero():
+    """Test the is_holiday function's behavior with input as 0.
+
+    Inputs:
+        Test when the input is 0.
+
+    Outputs:
+        Asserts that the function returns False when the input is 0.
+    """
+    assert not is_holiday(0), "0 identified as a holiday"
+
+
+def test_is_holiday_with_none():
+    """Test the is_holiday function's behavior with input as None.
+
+    Inputs:
+        Test when the input is None.
+
+    Outputs:
+        Asserts that the function returns False when the input is None.
+    """
+    assert not is_holiday(None), "None identified as a holiday"
+
+
 def test_preprocess_data_smoke():
     """Test the preprocess_data function for basic functionality.
 
@@ -220,7 +244,8 @@ test_is_holiday()
 test_is_italian_holiday()
 test_is_not_holiday()
 test_invalid_input_is_holiday()
-
+test_is_holiday_with_zero()
+test_is_holiday_with_none()
 
 # Run the smoke test for the preprocess_data function
 test_preprocess_data_smoke()
