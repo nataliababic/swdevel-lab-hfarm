@@ -491,6 +491,7 @@ To run the tests, navigate to the root directory of your project and execute the
 
 ```bash
 python -m unittest test_funct2.py
+```
 
 ###Test Cases:
 
@@ -506,6 +507,7 @@ To run the tests, navigate to the root directory of your project and execute the
 
 ```bash
 python -m unittest test_funct3.py
+```
 
 ###Test Cases:
 
