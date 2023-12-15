@@ -295,3 +295,81 @@ print(data_with_minutes.head())
 ```
 
 
+### Function 1: What are the average stay lengths in each area? 
+
+This backend function calculates the average number of visitors for a given area and stay time based on the provided traffic data.
+
+#### Parameters:
+
+- `df` (DataFrame): The input DataFrame containing traffic data.
+- `area` (str): The specific area for which to calculate the average stay length.
+- `stay_time` (str): The duration range for which to calculate the average stay length.
+
+#### Returns:
+
+- `tuple`: A tuple containing the average total visitors, average visitors on holidays, and average visitors on non-holidays. If the area or stay time is invalid, the function returns an appropriate error message.
+
+#### Example Usage:
+
+```python
+# Import necessary libraries and modules
+from your_module import calculate_average_visitors
+# Load your DataFrame (df) with traffic data
+
+# Example input
+result = average_stay_length(df, “Palazzo Poggi, "From “5 to 10 min”)
+print(result)
+
+# Example output
+# (avg_tot, avg_holiday, avg_non_holiday)
+(383, 28, 537)
+
+### Function 2 : What is the average number of visitors per area on a specific date ? 
+
+This second backend function is used to compute the average number of visitors in a specified date, as well as the maximum and minimum number of visitors from output. 
+This function is composed by 3 different functions : 
+**traffic_per_area**
+Parameters : 
+Traffic (DataFrame): The input DataFrame containing traffic data.
+Target_date (str) : dd-mm chosen by the client 
+	Returns: 
+Result (DataFrame)  : DataFrame with the total visitors per area expected for the target date. 
+Result (str) : it returns "No data available for the given date." in case the date is not available or wrongly written. 
+**highest_affluence** 
+Parameters : 
+Result (DataFrame) :  the total visitors per area Fataframe created in traffic_per_area function
+	Returns: string with the area with the maximum amount of visitors
+
+**lowest_affluence** 
+Parameters : 
+Result (DataFrame) :  the total visitors per area Fataframe created in traffic_per_area function
+	Returns: string with the area with the minimum amount of visitors
+
+#### Example Usage:
+
+```python
+# Import necessary libraries and modules
+from your_module import traffic_per_area, highest_affluence, lowest_affluence 
+# Load your DataFrame (traffic) with traffic data
+
+# Example input
+Result =  traffic_per_area (traffic, "01-10")
+print (result, “\n”,highest_affluence(result), “\n”, lowest_affluence(result))
+
+# Example output
+
+Area                                                               Forcasted_Visitors 
+2 Torri ( Inizio Portico Via Zamboni )                              1462
+Facoltà di Giurisprudenza                                              1616
+Palazzo Poggi                                                                1407
+Piazza Puntoni ( Via Zamboni )                                       679 
+Piazza Rossini ( Palazzo Malvezzi )                              1834
+Piazza Scaravilli                                                             1174
+Piazza Verdi                                                                   2071
+Porta San Donato                                                          2546
+Via Del Guasto                                                                 821
+Via San Giacomo                                                           1735
+The Area with the highest tourism affluence is Porta San Donato with 2546 Forecasted Visitors 
+The Area with the lowest tourism affluence is Piazza Puntoni ( Via Zamboni ) with 679 Forecasted Visitors 
+
+
