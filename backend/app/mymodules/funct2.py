@@ -67,8 +67,3 @@ def lowest_affluence(result):
 
     return 'The Area with the lowest tourism affluence is {} with {} Forcasted Visitors'.format(min_area, mean_visitors)
 
-traffic = pd.read_csv("/app/app/updated_bologna.csv")
-traffic['Date'] = pd.to_datetime(traffic['Date'], format='%d/%m/%Y', errors='coerce')
-
-result =  traffic_per_area (traffic, "01-10")
-print (result,"\n", highest_affluence(result), "\n", lowest_affluence(result))
