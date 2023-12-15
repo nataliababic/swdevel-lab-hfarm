@@ -113,7 +113,7 @@ This will start both the frontend and backend containers and automatically insta
 
 ### Cleaning
 
-####** Load Data**
+#### ** Load Data**
 
 
 This function loads data from a CSV file into a DataFrame
@@ -144,7 +144,7 @@ print(data.head())
 ```
 
 
-####** Save Data**
+#### ** Save Data**
 
 
 This function saves the modified DataFrame into a new CSV file
@@ -172,7 +172,7 @@ print("Data saved successfully!")
 
 
 
-####** Is Holiday**
+#### ** Is Holiday**
 
 
 A function that determines if the passed day is a working or a non-working day with respect to the Italian calendar.
@@ -205,7 +205,7 @@ print(result)
 
 
 
-####** Preprocess Data**
+#### ** Preprocess Data**
 
 
     - Performs data preprocessing task:
@@ -237,7 +237,7 @@ print(processed_data.head())
 
 
 
-####** Convert to Minutes**
+#### ** Convert to Minutes**
 
 
 A function that converts strings containing the duration into minutes.
@@ -268,7 +268,7 @@ print(result_minutes)
 
 
 
-####** Process Durata Columns**
+#### ** Process Durata Columns**
 
 
 A function that processes the Duration column to get the average duration in minutes.
