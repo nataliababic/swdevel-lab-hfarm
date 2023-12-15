@@ -495,11 +495,11 @@ python -m unittest test_funct2.py
 
 ###Test Cases:
 
-    - TestCall: this test class includes test cases for functions traffic_per_area, highest_affluence and lowest_affluence in the funct2 module.
-    - test_traffic_per_area : test traffic_per_area function with a valid date 
-    - test _highest_affluence : test highest_affluence with a valid date 
-    - test _lowest_affluence : test lowest_affluence with a valid date 
-    - test_invalid_date : test traffic_per_are function in case an invalid date is chosen
+- TestCall: this test class includes test cases for functions traffic_per_area, highest_affluence and lowest_affluence in the funct2 module.
+- test_traffic_per_area : test traffic_per_area function with a valid date 
+- test _highest_affluence : test highest_affluence with a valid date 
+- test _lowest_affluence : test lowest_affluence with a valid date 
+- test_invalid_date : test traffic_per_are function in case an invalid date is chosen
 
 ## Tests of function 3
 
@@ -511,19 +511,19 @@ python -m unittest test_funct3.py
 
 ###Test Cases:
 
-    - Test_avg_comparison: this test class includes all test cases for the function avg_comparison in the funct3 module.
-    - test_average: test the avg_comparison function with valid input
-    - test_invalid_input: test avg_comparison with invalid input types
-    - test_years_unavailable: test avg_comparison with both years unavailable
-    - test_year1_unavailable: test avg_comparison with the first year unavailable
-    - test_year2_unavailable: test avg_comparison with the second year unavailable
-    - test_months_unavailable: test avg_comparison with both months unavailable independently from the chosen years
-    - test_month1_unavailable: test avg_comparison with the first month unavailable independently from the chosen years
-    - test_month2_unavailable: test avg_comparison with the second month unavailable
-    - independently from the chosen years
-    - test_months_not_for_years_selected: test avg_comparison with both months not available for the chosen years
-    - test_month1_not_for_year1_selected: test avg_comparison with the first month not available for the first chosen year
-    - test_month2_not_for_year2_selected: test avg_comparison with the second month not available for the second chosen year.
+- Test_avg_comparison: this test class includes all test cases for the function avg_comparison in the funct3 module.
+- test_average: test the avg_comparison function with valid input
+- test_invalid_input: test avg_comparison with invalid input types
+- test_years_unavailable: test avg_comparison with both years unavailable
+- test_year1_unavailable: test avg_comparison with the first year unavailable
+- test_year2_unavailable: test avg_comparison with the second year unavailable
+- test_months_unavailable: test avg_comparison with both months unavailable independently from the chosen years
+- test_month1_unavailable: test avg_comparison with the first month unavailable independently from the chosen years
+- test_month2_unavailable: test avg_comparison with the second month unavailable
+- independently from the chosen years
+- test_months_not_for_years_selected: test avg_comparison with both months not available for the chosen years
+- test_month1_not_for_year1_selected: test avg_comparison with the first month not available for the first chosen year
+- test_month2_not_for_year2_selected: test avg_comparison with the second month not available for the second chosen year.
 
 
 
