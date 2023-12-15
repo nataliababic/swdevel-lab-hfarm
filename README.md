@@ -60,14 +60,14 @@ Bidirectional communication is established between the Frontend (Flask) and Back
 
 ## Project Structure 
 - ‘backend/’: FastAPI backend implementation 
-- ‘App/’: folder that contains main.py and the folder for modules. 
-- - ‘tests/‘: folder that contains the main tests files for the modules.
-- Dockerfile: Dockerfile for building the backend image.
-- requirements.txt: List of Python dependencies for the backend.
+    - ‘App/’: folder that contains main.py and the folder for modules. 
+    - ‘tests/‘: folder that contains the main tests files for the modules.
+    - Dockerfile: Dockerfile for building the backend image.
+    - requirements.txt: List of Python dependencies for the backend.
 - ‘frontend/’: folder that contains Flask frontend implementation
-- ‘App/’: folder that contains main.py and the html templates.
-- Dockerfile: Dockerfile for building the frontend image. 
-- requirements.txt: List of Python dependencies for the frontend. 
+    - ‘App/’: folder that contains main.py and the html templates.
+    - Dockerfile: Dockerfile for building the frontend image. 
+    - requirements.txt: List of Python dependencies for the frontend. 
 - ‘Docker-compose.yml’: Docker compose configuration for running both frontend and backend. 
 
 # Prerequisites and Installation
