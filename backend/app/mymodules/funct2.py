@@ -66,3 +66,4 @@ def lowest_affluence(result):
     mean_visitors = min_area_row['Forcasted_Visitors']
 
     return 'The Area with the lowest tourism affluence is {} with {} Forcasted Visitors'.format(min_area, mean_visitors)
+

@@ -1,4 +1,3 @@
-import pytest
 import sys
 import pandas as pd
 import unittest
@@ -7,14 +6,12 @@ from fastapi.testclient import TestClient
 traffic = pd.read_csv("/app/app/updated_bologna.csv")
 traffic['Date'] = pd.to_datetime(traffic['Date'], format='%d/%m/%Y', errors='coerce')
 
-import sys
+
 sys.path.append('/app')  # Add the path to the project's base directory
 
-#from app.main import forecasted_visitors_per_area
+# From app.main import forecasted_visitors_per_area
 from app.mymodules.funct2 import traffic_per_area,highest_affluence,lowest_affluence
 
-#from app.main import app
-#client = TestClient(app)
 
 class TestCall(unittest.TestCase):
 
