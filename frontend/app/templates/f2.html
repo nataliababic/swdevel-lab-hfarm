@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %} by date {% endblock %}
+
+{% block content %}
+
+<div class="container p-4 bg-white rounded shadow-sm">
+    <h2 class="text-center mb-4"> Select date to display average number of visitors </h2>
+
+    <form method="get" action="/f2">
+        <div class="mb-3">
+            <!-- form to select day, ranging from first to thirty-first of any month -->
+            <label for="daySelection" class="form-label">Select day:</label>
+            <select class="form-select" id="daySelection" name="daySelection" required>
+                {% for day in range(1, 32) %}
+                <option value="{{ day }}">{{ day }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <!-- form to select month, ranging from first to twelfth of any year -->
+            <label for="monthSelection" class="form-label">Select month:</label>
+            <select class="form-select" id="monthSelection" name="monthSelection" required>
+                {% for month in range(1, 13) %}
+                <option value="{{ month }}">{{ month }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button style="background-color: darkred; color: white; padding: 10px 10px; border: none; border-radius: 5px; cursor: pointer;" type="submit">Submit</button>
+    </form>
+
+    <!-- response once the form has been submitted -->
+    {% if affluence %}
+    <div class="container mt-5 text-center">
+        <h2>Here's your results:</h2>
+        <!-- a table is created for the first answer, which returns affluence for each area for the date specified-->
+        <div class="card">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Area</th>
+                        <th>Forecasted Visitors</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for area in affluence[0] %}
+                    <tr>
+                        <td>{{ area['Area'] }}</td>
+                        <td>{{ area['Forcasted_Visitors'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- The area with the maximum affluence for that day is returned -->
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Max Affluence</h5>
+                <p class="card-text">{{ affluence[1] }}</p>
+            </div>
+        </div>
+        <!-- The area with the minimum affluence for that day is returned -->
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Min Affluence</h5>
+                <p class="card-text">{{ affluence[2] }}</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% endblock %}

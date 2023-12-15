@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %} Comparison between periods {% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 text-left">
+    <h2 style="font-size: 1.5em">These are the months available for each year</h2>
+
+    <p style="text-align: left; margin-bottom: 10px;">
+        <strong>2019:</strong>
+        <span class="months-list">July, August, September, October, November, December</span>
+    </p>
+
+    <p style="text-align: left; margin-bottom: 10px;">
+        <strong>2020:</strong>
+        <span class="months-list">January, February, July, August, September, October, November, December</span>
+    </p>
+
+    <p style="text-align: left; margin-bottom: 10px;">
+        <strong>2021:</strong>
+        <span class="months-list">January, February, March, April</span>
+    </p>
+</div>
+
+<div class="container p-4">
+    <h2 class="text-center mb-4"> Select two periods to display average number of visitors for comparison </h2>
+
+    <form method="get" action="/f3">
+        <div class="mb-3">
+            <label for="param4" class="form-label">Select first year of interest:</label>
+            <select class="form-select" id="param4" name="param4" required>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="param5" class="form-label">Select month for first year of interest:</label>
+            <select class="form-select" id="param5" name="param5" required>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="param6" class="form-label">Select second year of interest:</label>
+            <select class="form-select" id="param6" name="param6" required>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="param7" class="form-label">Select month for second year of interest:</label>
+            <select class="form-select" id="param7" name="param7" required>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
+        <button style="background-color: darkred; color: white; padding: 10px 10px; border: none; border-radius: 5px; cursor: pointer;" type="submit">Submit</button>
+        
+    </form>
+
+</div>
+
+<!-- response once the form has been submitted -->
+{% if avg_visitors %}
+<div class="container mt-5 text-center">
+    <h2>Here's your results:</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">First Period</h5>
+            <p class="card-text">The average number of visitors for the first period selected is {{avg_visitors[0]}}</p>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">Second Period</h5>
+            <p class="card-text">The average number of visitors for the second period selected is {{avg_visitors[1]}}
+            </p>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
