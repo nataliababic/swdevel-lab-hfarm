@@ -2,9 +2,10 @@
 
 This file has the objective to explain in detail the project for Lab of Software Project Development, made by: Anna Citon (890729), Alessio Pitteri (888551), Lorenzo Paro (889505), Natalia Babic (890577) and Rachele Suardi (890590).
 The project’s aim is to allow the user to analyse Bologna's tourist traffic in main squares and other places of interest. Indeed, the bologna.csv file provides information about the number of visitors depending on:
-the area: Due Torri, Facoltà di Giurisprudenza, Palazzo Poggi, Piazza Puntoni, Piazza Rossini, Piazza Scaravilli, Piazza Verdi, Porta San Donato, Via Del Guasto, and Via San Giacomo;
-the day: from July 2019 to April 2021;
-the stay time length, which varies from less than one minute to more than six hours. 
+- the area: Due Torri, Facoltà di Giurisprudenza, Palazzo Poggi, Piazza Puntoni, Piazza Rossini, Piazza
+  Scaravilli, Piazza Verdi, Porta San Donato, Via Del Guasto, and Via San Giacomo;
+- the day: from July 2019 to April 2021;
+- the stay time length, which varies from less than one minute to more than six hours. 
 
 # Table of Content : 
 - Flask and FastAPI Dockerized Project 
@@ -58,16 +59,16 @@ Bidirectional communication is established between the Frontend (Flask) and Back
 
 
 ## Project Structure 
-‘backend/’: FastAPI backend implementation 
-‘App/’: folder that contains main.py and the folder for modules. 
-‘tests/‘: folder that contains the main tests files for the modules.
-Dockerfile: Dockerfile for building the backend image.
-requirements.txt: List of Python dependencies for the backend.
-‘frontend/’: folder that contains Flask frontend implementation
-‘App/’: folder that contains main.py and the html templates.
-Dockerfile: Dockerfile for building the frontend image. 
-requirements.txt: List of Python dependencies for the frontend. 
-‘Docker-compose.yml’: Docker compose configuration for running both frontend and backend. 
+- ‘backend/’: FastAPI backend implementation 
+- ‘App/’: folder that contains main.py and the folder for modules. 
+- - ‘tests/‘: folder that contains the main tests files for the modules.
+- Dockerfile: Dockerfile for building the backend image.
+- requirements.txt: List of Python dependencies for the backend.
+- ‘frontend/’: folder that contains Flask frontend implementation
+- ‘App/’: folder that contains main.py and the html templates.
+- Dockerfile: Dockerfile for building the frontend image. 
+- requirements.txt: List of Python dependencies for the frontend. 
+- ‘Docker-compose.yml’: Docker compose configuration for running both frontend and backend. 
 
 # Prerequisites and Installation
 
