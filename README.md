@@ -55,3 +55,54 @@ The project follows a simple client-server architecture.
 
 ## Communication 
 Bidirectional communication is established between the Frontend (Flask) and Backend (FastAPI). Docker Compose facilitates this communication, allowing the components to work together seamlessly.
+
+
+## Project Structure 
+‘backend/’: FastAPI backend implementation 
+‘App/’: folder that contains main.py and the folder for modules. 
+‘tests/‘: folder that contains the main tests files for the modules.
+Dockerfile: Dockerfile for building the backend image.
+requirements.txt: List of Python dependencies for the backend.
+‘frontend/’: folder that contains Flask frontend implementation
+‘App/’: folder that contains main.py and the html templates.
+Dockerfile: Dockerfile for building the frontend image. 
+requirements.txt: List of Python dependencies for the frontend. 
+‘Docker-compose.yml’: Docker compose configuration for running both frontend and backend. 
+
+# Prerequisites and Installation
+
+## Prerequisites 
+The user should have Docker and Visual Studio Code installed. To proceed with the installation and configuration, the user should have the URL of the remote directory and Docker open on the machine. Finally, on Visual Studio Code the user should have installed the following extensions: Python, the Docker Extension and the Remote Development Tools.
+
+##  Installation and configuration 
+
+1. Clone the repository and navigate in the directory:
+
+   ```bash
+   git clone REPO_URL
+   cd swdevel-lab-hfarm
+   ```
+
+2. Build and run the Docker containers:
+
+   ```bash
+   docker-compose up --build
+   ```
+3. Open the "Docker" view in Visual Studio Code by clicking on the Docker icon in the Activity Bar.
+
+4. Under "Containers," you should see your running containers. Right-click on the container running your Flask or FastAPI application.
+
+5. Select "Attach Visual Studio Code" from the context menu for both containers.
+
+6. Open the Run view in Visual Studio Code and select the "Python: Remote Attach" configuration in each container.
+
+7. Click the "Run" button in each container. 
+
+This will start both the frontend and backend containers and automatically install the required libraries such as pandas, FastAPI and Holidays.
+  
+> **NOTE:** Uncomment the lines in the Dockerfiles that follow the section labelled `Command to run the application` and comment out the ones labelled `Command to keep the container running`. This will allow you to access the backend and frontend, as described in Point 3.
+
+8.  Open your web browser and navigate to [http://localhost:8080](http://localhost:8080) to access the `frontend` and [http://localhost:8081](http://localhost:8081) to access the `backend`.
+
+9. Use the website on the frontend to query the functions in the backend.
+
