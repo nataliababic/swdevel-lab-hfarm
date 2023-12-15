@@ -14,7 +14,7 @@ import pandas as pd
 import sys
 sys.path.append('/app')  # Add the path to the project's base directory
 
-from app.mymodules.Question_2 import traffic_per_area, highest_affluence, lowest_affluence
+from app.mymodules.funct2 import traffic_per_area, highest_affluence, lowest_affluence
 from app.mymodules.funct1 import average_stay_length
 from app.mymodules.funct3 import avg_comparison
 

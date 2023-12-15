@@ -11,7 +11,7 @@ import sys
 sys.path.append('/app')  # Add the path to the project's base directory
 
 #from app.main import forecasted_visitors_per_area
-from app.mymodules.Question_2 import traffic_per_area,highest_affluence,lowest_affluence
+from app.mymodules.funct2 import traffic_per_area,highest_affluence,lowest_affluence
 
 #from app.main import app
 #client = TestClient(app)
