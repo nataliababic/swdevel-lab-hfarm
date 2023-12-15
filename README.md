@@ -323,9 +323,9 @@ print(result)
 # Example output
 # (avg_tot, avg_holiday, avg_non_holiday)
 (383, 28, 537)
+```
 
-### Function 2 : What is the average number of visitors per area on a specific date ? 
-
+### Function 2 : What is the average number of visitors per area on a specific date? 
 This second backend function is used to compute the average number of visitors in a specified date, as well as the maximum and minimum number of visitors from output. 
 This function is composed by 3 different functions : 
 **traffic_per_area**
@@ -355,19 +355,20 @@ from your_module import traffic_per_area, highest_affluence, lowest_affluence
 # Example input
 Result =  traffic_per_area (traffic, "01-10")
 print (result, “\n”,highest_affluence(result), “\n”, lowest_affluence(result))
+```
 
 # Example output
 
 Area                                                               Forcasted_Visitors 
-2 Torri ( Inizio Portico Via Zamboni )                              1462
-Facoltà di Giurisprudenza                                              1616
-Palazzo Poggi                                                                1407
-Piazza Puntoni ( Via Zamboni )                                       679 
-Piazza Rossini ( Palazzo Malvezzi )                              1834
-Piazza Scaravilli                                                             1174
-Piazza Verdi                                                                   2071
+2 Torri ( Inizio Portico Via Zamboni )                                    1462
+Facoltà di Giurisprudenza                                                 1616
+Palazzo Poggi                                                             1407
+Piazza Puntoni ( Via Zamboni )                                             679 
+Piazza Rossini ( Palazzo Malvezzi )                                       1834
+Piazza Scaravilli                                                         1174
+Piazza Verdi                                                              2071
 Porta San Donato                                                          2546
-Via Del Guasto                                                                 821
+Via Del Guasto                                                             821
 Via San Giacomo                                                           1735
 The Area with the highest tourism affluence is Porta San Donato with 2546 Forecasted Visitors 
 The Area with the lowest tourism affluence is Piazza Puntoni ( Via Zamboni ) with 679 Forecasted Visitors 
