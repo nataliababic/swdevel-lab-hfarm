@@ -107,3 +107,191 @@ This will start both the frontend and backend containers and automatically insta
 
 9. Use the website on the frontend to query the functions in the backend.
 
+# Usage 
+
+## Usage of the backend
+
+### Cleaning
+
+####** Load Data**
+
+
+This function loads data from a CSV file into a DataFrame
+
+
+#### Parameters:
+
+
+    - `file_path (str)` : the path to the CSV file.
+
+
+#### Returns:
+
+
+    - `dataFrame` : the loaded data from the CSV file.
+
+
+#### Example Usage
+
+
+Provide the file path to your CSV file with:
+```file_path = "path/to/your/file.csv"```
+
+
+Load data from the CSV file with:
+```data = load_data(file_path)
+print(data.head()) 
+```
+
+
+####** Save Data**
+
+
+This function saves the modified DataFrame into a new CSV file
+
+
+#### Parameters
+
+
+    - `data (dataFrame)` : the DataFrame to be saved.
+    - `output_file_path (str)` : the path where to save the file.
+
+
+#### Example Usage
+
+
+Assuming 'data' is your modified DataFrame select a file path:
+```output_file_path = "path/to/save/your/file.csv"```
+
+
+Save the modified DataFrame to a new CSV file:
+```save_data(data, output_file_path)
+print("Data saved successfully!")
+```
+
+
+
+
+####** Is Holiday**
+
+
+A function that determines if the passed day is a working or a non-working day with respect to the Italian calendar.
+
+
+#### Parameters
+
+
+    - `date (datetime)` : the date as a datetime object.
+
+
+#### Returns
+
+
+    - `bool` : true if the date is a holiday or a weekend, false otherwise.
+
+
+#### Example usage
+
+
+Pass a date to check if it's a holiday or weekend
+```date_to_check = datetime(25, 12, 2020) ```
+
+
+Check if the date is a holiday or weekend in Italy:
+```result = is_holiday(date_to_check)
+print(result)
+```
+
+
+
+
+####** Preprocess Data**
+
+
+    - Performs data preprocessing task:
+    - Adding a Holiday column indicating where the date is a holiday or not.
+    - Shift the Duration column to Visitors for data in the year 2021.
+    - Shift Duration to 0 for data in the year 2021.
+
+
+#### Parameters
+
+
+    - `data (DataFrame)` : the input DataFrame.
+
+
+#### Returns
+
+
+    - `dataFrame` : the preprocessed DataFrame.
+
+
+#### Example Usage
+
+
+Assuming 'raw_data' is your original DataFrame:
+```processed_data = preprocess_data(raw_data)
+print(processed_data.head())
+```
+
+
+
+
+####** Convert to Minutes**
+
+
+A function that converts strings containing the duration into minutes.
+
+
+#### Parameters
+
+
+    - `duration_str (str)` : the duration string.
+
+
+#### Returns
+
+
+    - `int` : the duration in minutes.
+#### Example Usage
+
+
+Pass a duration string to convert to minutes
+```duration = "2 hours 30 minutes" ```
+
+
+Convert the duration string to minutes
+```result_minutes = convert_to_minutes(duration)
+print(result_minutes)
+```
+
+
+
+
+####** Process Durata Columns**
+
+
+A function that processes the Duration column to get the average duration in minutes.
+
+
+#### Parameters
+
+
+    - `data (DataFrame)` : the input DataFrame.
+
+
+#### Returns
+
+
+    - `DataFrame` : DataFrame with Duration column values converted to minutes.
+
+
+#### Example Usage
+
+
+Assuming 'data' is your DataFrame
+```data_with_minutes = process_durata_column(data)
+print(data_with_minutes.head())
+```
+
+
