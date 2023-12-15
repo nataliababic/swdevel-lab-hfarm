@@ -419,3 +419,70 @@ Comparison of number of visitors between two periods
 
 In each dedicated function page, the user will be able to select, from a form selector, respectively the area and staytime, the target date, or the periods for comparison of which they want information about, and the website will provide the results immediately below the form, after communicating with the functions made in the backend.
 
+
+# Backend testing
+To ensure the correctness and reliability of the backend functions, a suite of tests has been developed using the ‘unittest’ and ‘pytest’ frameworks. These tests cover various scenarios and input cases to validate the functionality. 
+
+## Tests of the cleaning process
+
+
+To run the tests, navigate to the root directory of your project and execute the following command:
+
+```bash
+pytest tests/test_csv_cleaning.py
+```
+
+
+###Test cases:
+
+
+- test_load_data_smoke: tests basic functionality for loading data from a CSV file into a Pandas DataFrame.
+
+- test_save_data_smoke: checks the basic functionality of saving a DataFrame into a new CSV file.
+
+- test_is_holiday: validates if specific dates are identified correctly as holidays or weekends.
+
+- test_is_italian_holiday: verifies the identification of known Italian holidays for specific years.
+
+- test_is_not_holiday: checks if provided weekdays (non-holidays) are correctly identified.
+
+- test_invalid_input_is_holiday: ensures the function returns `False` for invalid inputs to check holidays.
+
+- test_is_holiday_with_zero: checks that if the value 0 is passed to the function it is properly handled.
+
+- test_is_holiday_with_none: checks that if the value None is passed to the function it is properly handled.
+  
+- test_preprocess_data_smoke: tests the preprocessing function to ensure the presence of required columns in the output DataFrame.
+   
+- test_convert_to_minutes_with_hours: validates the conversion of duration strings in hours to minutes.
+   
+- test_convert_to_minutes_with_minutes: checks the conversion of duration strings in minutes to minutes (no change).
+   
+- test_convert_to_minutes_with_empty_string: tests the conversion of an empty duration string.
+   
+- test_convert_to_minutes_without_numbers: verifies the behaviour of the conversion function with duration strings not containing any numbers.
+   
+- test_process_durata_column_smoke: validates the functionality of processing the 'Duration' column to ensure the presence and type of converted values in minutes.
+
+
+## Tests of function 1
+
+To run the tests, navigate to the root directory of your project and execute the following command:
+
+```bash
+python -m unittest test_funct1.py
+```
+
+###Test Cases:
+
+TestAverageStayLength: this test class includes test cases for the average_stay_length function in the funct1 module.
+- test_average_stay_length_valid: Test with a valid area and stay time.
+- test_average_stay_length_invalid_area: Test with an invalid area.
+- test_average_stay_length_no_records: Test with an area and stay time where no records are found.
+- test_average_stay_length_invalid_time: Test with a valid area and an invalid duration.
+
+TestConvertToMinutes: this test class includes test cases for the convert_to_minutes function in the csv_cleaning module.
+- test_convert_to_minutes_valid: Test with a valid duration string.
+- test_convert_to_minutes_invalid_format: Test with an invalid duration string format.
+
+
