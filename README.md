@@ -370,31 +370,18 @@ pytest tests/test_csv_cleaning.py
 
 ### Test cases:
 - `test_load_data_smoke`: tests basic functionality for loading data from a CSV file into a Pandas DataFrame.
-
 - `test_save_data_smoke`: checks the basic functionality of saving a DataFrame into a new CSV file.
-
 - `test_is_holiday`: validates if specific dates are identified correctly as holidays or weekends.
-
 - `test_is_italian_holiday`: verifies the identification of known Italian holidays for specific years.
-
 - `test_is_not_holiday`: checks if provided weekdays (non-holidays) are correctly identified.
-
 - `test_invalid_input_is_holiday`: ensures the function returns 'False' for invalid inputs to check holidays.
-
 - `test_is_holiday_with_zero`: checks that if the value 0 is passed to the function it is properly handled.
-
-- `test_is_holiday_with_none`: checks that if the value None is passed to the function it is properly handled.
-  
-- `test_preprocess_data_smoke`: tests the preprocessing function to ensure the presence of required columns in the output DataFrame.
-   
-- `test_convert_to_minutes_with_hours`: validates the conversion of duration strings in hours to minutes.
-   
-- `test_convert_to_minutes_with_minutes`: checks the conversion of duration strings in minutes to minutes (no change).
-   
-- `test_convert_to_minutes_with_empty_string`: tests the conversion of an empty duration string.
-   
+- `test_is_holiday_with_none`: checks that if the value None is passed to the function it is properly handled.  
+- `test_preprocess_data_smoke`: tests the preprocessing function to ensure the presence of required columns in the output DataFrame.   
+- `test_convert_to_minutes_with_hours`: validates the conversion of duration strings in hours to minutes.   
+- `test_convert_to_minutes_with_minutes`: checks the conversion of duration strings in minutes to minutes (no change).  
+- `test_convert_to_minutes_with_empty_string`: tests the conversion of an empty duration string.   
 - `test_convert_to_minutes_without_numbers`: verifies the behaviour of the conversion function with duration strings not containing any numbers.
-   
 - `test_process_durata_column_smoke`: validates the functionality of processing the 'Duration' column to ensure the presence and type of converted values in minutes.
 
 
@@ -452,6 +439,25 @@ Test_avg_comparison: this test class includes all test cases for the function av
 - `test_months_not_for_years_selected`: test avg_comparison with both months not available for the chosen years
 - `test_month1_not_for_year1_selected`: test avg_comparison with the first month not available for the first chosen year
 - `test_month2_not_for_year2_selected`: test avg_comparison with the second month not available for the second chosen year.
+
+
+## Tests of Main
+To run the tests, navigate to the root directory of your project and execute the following command:
+
+```bash
+pytest tests/test_main.py
+```
+
+### Test cases:
+- `test_read_main`: Tests the read_main endpoint for expected JSON response and status code.
+- `test_make_average_smoke`: Validates the make_average endpoint's response with mock parameters.
+- `test_forecasted_visitors_per_area_smoke`: Checks the forecasted_visitors_per_area endpoint for response status.
+- `test_average_comparison_smoke`: Ensures the average_comparison endpoint responds with status code 200.
+- `test_make_average`: Validates the make_average endpoint for expected output with specific parameters.
+- `test_forecasted_visitors_per_area`: Checks if forecasted_visitors_per_area endpoint returns areas and 200 status.
+- `test_average_comparison`: Tests average_comparison endpoint for correct average values and status code 200.
+- `test_make_average_error_handling`: Verifies error handling in make_average function for raising HTTPException.
+- `test_forecasted_visitors_error_handling`: Checks error handling in forecasted_visitors_per_area for HTTPException.
 
 
 
