@@ -264,8 +264,8 @@ This function is composed by 3 different functions:
 
 #### traffic_per_area
 - **Parameters**: 
-    `Traffic` (DataFrame): The input DataFrame containing traffic data.
-    `Target_date` (str): dd-mm chosen by the client 
+    - `Traffic` (DataFrame): The input DataFrame containing traffic data.
+    - `Target_date` (str): dd-mm chosen by the client 
 
 - **Returns**: 
     - `Result` (DataFrame): DataFrame with the total visitors per area expected for the target date. 
