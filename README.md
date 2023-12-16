@@ -100,7 +100,7 @@ The user should have Docker and Visual Studio Code installed. To proceed with th
 
 7. Click the "Run" button in each container. 
 
-This will start both the frontend and backend containers and automatically install the required libraries such as pandas, FastAPI and Holidays.
+This will start both the frontend and backend containers and automatically install the required libraries such as pandas and Holidays.
   
 > **NOTE:** Uncomment the lines in the Dockerfiles that follow the section labelled `Command to run the application` and comment out the ones labelled `Command to keep the container running`. This will allow you to access the backend and frontend, as described in Point 3.
 
@@ -108,118 +108,126 @@ This will start both the frontend and backend containers and automatically insta
 
 9. Use the website on the frontend to query the functions in the backend.
 
+
+
 # Usage 
 
 ## Usage of the backend
 
 ### Cleaning
 
-#### ** Load Data**
-This function loads data from a CSV file into a DataFrame
+#### ___**Load Data**___
+This function loads data from a CSV file into a DataFrame.
 
 #### Parameters:
-    - `file_path (str)` : the path to the CSV file.
+`file_path (str)` : the path to the CSV file.
 
 #### Returns:
-    - `dataFrame` : the loaded data from the CSV file.
+`DataFrame` : the loaded data from the CSV file.
 
 #### Example Usage
 Provide the file path to your CSV file with:
 ```file_path = "path/to/your/file.csv"```
 
 Load data from the CSV file with:
-```data = load_data(file_path)
+```
+data = load_data(file_path)
 print(data.head()) 
 ```
 
 
-#### ** Save Data**
-This function saves the modified DataFrame into a new CSV file
+#### ___**Save Data**___
+This function saves the modified DataFrame into a new CSV file.
 
 #### Parameters
-    - `data (dataFrame)` : the DataFrame to be saved.
-    - `output_file_path (str)` : the path where to save the file.
+`data (DataFrame)` : the DataFrame to be saved.
+`output_file_path (str)` : the path where to save the file.
 
 #### Example Usage
 
-Assuming 'data' is your modified DataFrame select a file path:
+Assuming 'data' is your modified DataFrame, select a file path:
 ```output_file_path = "path/to/save/your/file.csv"```
 
 Save the modified DataFrame to a new CSV file:
-```save_data(data, output_file_path)
+```
+save_data(data, output_file_path)
 print("Data saved successfully!")
 ```
 
 
-#### ** Is Holiday**
+#### ___**Is Holiday**___
 A function that determines if the passed day is a working or a non-working day with respect to the Italian calendar.
 
 #### Parameters
-    - `date (datetime)` : the date as a datetime object.
+`date (datetime)` : the date as a datetime object.
 
 #### Returns
-    - `bool` : true if the date is a holiday or a weekend, false otherwise.
+`bool` : true if the date is a holiday or a weekend, false otherwise.
 
 #### Example usage
 Pass a date to check if it's a holiday or weekend
 ```date_to_check = datetime(25, 12, 2020) ```
 
 Check if the date is a holiday or weekend in Italy:
-```result = is_holiday(date_to_check)
+```
+result = is_holiday(date_to_check)
 print(result)
 ```
 
 
-#### ** Preprocess Data**
+#### ___**Preprocess Data**___
 Performs a data preprocessing task:
-    - Adding a Holiday column indicating where the date is a holiday or not.
-    - Shifting the Duration column to Visitors for data in the year 2021.
-    - Shifting Duration to 0 for data in the year 2021.
+- Adding a Holiday column indicating where the date is a holiday or not.
+- Shifting the Duration column to Visitors for data in the year 2021.
+- Shifting Duration to 0 for data in the year 2021.
 
 #### Parameters
-    - `data (DataFrame)` : the input DataFrame.
+`data (DataFrame)` : the input DataFrame.
 
 #### Returns
-    - `dataFrame` : the preprocessed DataFrame.
+`dataFrame` : the preprocessed DataFrame.
 
 #### Example Usage
 Assuming 'raw_data' is your original DataFrame:
-```processed_data = preprocess_data(raw_data)
+```
+processed_data = preprocess_data(raw_data)
 print(processed_data.head())
 ```
 
 
-#### ** Convert to Minutes**
+#### ___**Convert to Minutes**___
 A function that converts strings containing the duration into minutes.
 
 #### Parameters
-    - `duration_str (str)` : the duration string.
+`duration_str (str)` : the duration string.
 
 #### Returns
-    - `int` : the duration in minutes.
+`int` : the duration in minutes.
 
 #### Example Usage
 Pass a duration string to convert to minutes
 ```duration = "2 hours 30 minutes" ```
 
 Convert the duration string to minutes
-```result_minutes = convert_to_minutes(duration)
+```
+result_minutes = convert_to_minutes(duration)
 print(result_minutes)
 ```
 
 
-#### ** Process Durata Columns**
+#### ___**Process Durata Columns**___
 A function that processes the Duration column to get the average duration in minutes.
 
 #### Parameters
-    - `data (DataFrame)` : the input DataFrame.
+`data (DataFrame)` : the input DataFrame.
 
 #### Returns
-    - `DataFrame` : DataFrame with Duration column values converted to minutes.
+`DataFrame` : DataFrame with Duration column values converted to minutes.
 
 #### Example Usage
 Assuming 'data' is your DataFrame
-```data_with_minutes = process_durata_column(data)
+```
+data_with_minutes = process_durata_column(data)
 print(data_with_minutes.head())
 ```
 
@@ -254,27 +262,27 @@ print(result)
 This second backend function is used to compute the average number of visitors in a specified date, as well as the maximum and minimum number of visitors from output. 
 This function is composed by 3 different functions: 
 
-**traffic_per_area**
-Parameters: 
+#### traffic_per_area
+**Parameters**: 
 `Traffic` (DataFrame): The input DataFrame containing traffic data.
 `Target_date` (str): dd-mm chosen by the client 
 
-Returns: 
+**Returns**: 
 `Result` (DataFrame): DataFrame with the total visitors per area expected for the target date. 
 `Result` (str): it returns "No data available for the given date." in case the date is not available or wrongly written. 
 
-**highest_affluence** 
-Parameters: 
+#### highest_affluence 
+**Parameters**: 
 `Result` (DataFrame) :  the total visitors per area Fataframe created in traffic_per_area function
 
-Returns: 
+**Returns**: 
 string with the area with the maximum amount of visitors
 
-**lowest_affluence** 
-Parameters: 
+#### lowest_affluence
+**Parameters**: 
 `Result` (DataFrame) :  the total visitors per area Fataframe created in traffic_per_area function
 
-Returns: 
+**Returns**: 
 string with the area with the minimum amount of visitors
 
 #### Example Usage:
@@ -358,33 +366,33 @@ pytest tests/test_csv_cleaning.py
 ```
 
 ### Test cases:
-- test_load_data_smoke: tests basic functionality for loading data from a CSV file into a Pandas DataFrame.
+- `test_load_data_smoke`: tests basic functionality for loading data from a CSV file into a Pandas DataFrame.
 
-- test_save_data_smoke: checks the basic functionality of saving a DataFrame into a new CSV file.
+- `test_save_data_smoke`: checks the basic functionality of saving a DataFrame into a new CSV file.
 
-- test_is_holiday: validates if specific dates are identified correctly as holidays or weekends.
+- `test_is_holiday`: validates if specific dates are identified correctly as holidays or weekends.
 
-- test_is_italian_holiday: verifies the identification of known Italian holidays for specific years.
+- `test_is_italian_holiday`: verifies the identification of known Italian holidays for specific years.
 
-- test_is_not_holiday: checks if provided weekdays (non-holidays) are correctly identified.
+- `test_is_not_holiday`: checks if provided weekdays (non-holidays) are correctly identified.
 
-- test_invalid_input_is_holiday: ensures the function returns `False` for invalid inputs to check holidays.
+- `test_invalid_input_is_holiday`: ensures the function returns 'False' for invalid inputs to check holidays.
 
-- test_is_holiday_with_zero: checks that if the value 0 is passed to the function it is properly handled.
+- `test_is_holiday_with_zero`: checks that if the value 0 is passed to the function it is properly handled.
 
-- test_is_holiday_with_none: checks that if the value None is passed to the function it is properly handled.
+- `test_is_holiday_with_none`: checks that if the value None is passed to the function it is properly handled.
   
-- test_preprocess_data_smoke: tests the preprocessing function to ensure the presence of required columns in the output DataFrame.
+- `test_preprocess_data_smoke`: tests the preprocessing function to ensure the presence of required columns in the output DataFrame.
    
-- test_convert_to_minutes_with_hours: validates the conversion of duration strings in hours to minutes.
+- `test_convert_to_minutes_with_hours`: validates the conversion of duration strings in hours to minutes.
    
-- test_convert_to_minutes_with_minutes: checks the conversion of duration strings in minutes to minutes (no change).
+- `test_convert_to_minutes_with_minutes`: checks the conversion of duration strings in minutes to minutes (no change).
    
-- test_convert_to_minutes_with_empty_string: tests the conversion of an empty duration string.
+- `test_convert_to_minutes_with_empty_string`: tests the conversion of an empty duration string.
    
-- test_convert_to_minutes_without_numbers: verifies the behaviour of the conversion function with duration strings not containing any numbers.
+- `test_convert_to_minutes_without_numbers`: verifies the behaviour of the conversion function with duration strings not containing any numbers.
    
-- test_process_durata_column_smoke: validates the functionality of processing the 'Duration' column to ensure the presence and type of converted values in minutes.
+- `test_process_durata_column_smoke`: validates the functionality of processing the 'Duration' column to ensure the presence and type of converted values in minutes.
 
 
 ## Tests of function 1
@@ -396,14 +404,14 @@ python -m unittest test_funct1.py
 
 ### Test Cases:
 TestAverageStayLength: this test class includes test cases for the average_stay_length function in the funct1 module.
-- test_average_stay_length_valid: Test with a valid area and stay time.
-- test_average_stay_length_invalid_area: Test with an invalid area.
-- test_average_stay_length_no_records: Test with an area and stay time where no records are found.
-- test_average_stay_length_invalid_time: Test with a valid area and an invalid duration.
+- `test_average_stay_length_valid`: Test with a valid area and stay time.
+- `test_average_stay_length_invalid_area`: Test with an invalid area.
+- `test_average_stay_length_no_records`: Test with an area and stay time where no records are found.
+- `test_average_stay_length_invalid_time`: Test with a valid area and an invalid duration.
 
 TestConvertToMinutes: this test class includes test cases for the convert_to_minutes function in the csv_cleaning module.
-- test_convert_to_minutes_valid: Test with a valid duration string.
-- test_convert_to_minutes_invalid_format: Test with an invalid duration string format.
+- `test_convert_to_minutes_valid`: Test with a valid duration string.
+- `test_convert_to_minutes_invalid_format`: Test with an invalid duration string format.
 
 
 ## Tests of function 2
@@ -414,11 +422,11 @@ python -m unittest test_funct2.py
 ```
 
 ### Test Cases:
-- TestCall: this test class includes test cases for functions traffic_per_area, highest_affluence and lowest_affluence in the funct2 module.
-- test_traffic_per_area : test traffic_per_area function with a valid date 
-- test _highest_affluence : test highest_affluence with a valid date 
-- test _lowest_affluence : test lowest_affluence with a valid date 
-- test_invalid_date : test traffic_per_are function in case an invalid date is chosen
+TestCall: this test class includes test cases for functions traffic_per_area, highest_affluence and lowest_affluence in the funct2 module.
+- `test_traffic_per_area`: test traffic_per_area function with a valid date 
+- `test _highest_affluence` : test highest_affluence with a valid date 
+- `test _lowest_affluence` : test lowest_affluence with a valid date 
+- `test_invalid_date` : test traffic_per_are function in case an invalid date is chosen
 
 
 ## Tests of function 3
@@ -429,19 +437,18 @@ python -m unittest test_funct3.py
 ```
 
 ### Test Cases:
-- Test_avg_comparison: this test class includes all test cases for the function avg_comparison in the funct3 module.
-- test_average: test the avg_comparison function with valid input
-- test_invalid_input: test avg_comparison with invalid input types
-- test_years_unavailable: test avg_comparison with both years unavailable
-- test_year1_unavailable: test avg_comparison with the first year unavailable
-- test_year2_unavailable: test avg_comparison with the second year unavailable
-- test_months_unavailable: test avg_comparison with both months unavailable independently from the chosen years
-- test_month1_unavailable: test avg_comparison with the first month unavailable independently from the chosen years
-- test_month2_unavailable: test avg_comparison with the second month unavailable
-- independently from the chosen years
-- test_months_not_for_years_selected: test avg_comparison with both months not available for the chosen years
-- test_month1_not_for_year1_selected: test avg_comparison with the first month not available for the first chosen year
-- test_month2_not_for_year2_selected: test avg_comparison with the second month not available for the second chosen year.
+Test_avg_comparison: this test class includes all test cases for the function avg_comparison in the funct3 module.
+- `test_average`: test the avg_comparison function with valid input
+- `test_invalid_input`: test avg_comparison with invalid input types
+- `test_years_unavailable`: test avg_comparison with both years unavailable
+- `test_year1_unavailable`: test avg_comparison with the first year unavailable
+- `test_year2_unavailable`: test avg_comparison with the second year unavailable
+- `test_months_unavailable`: test avg_comparison with both months unavailable independently from the chosen years
+- `test_month1_unavailable`: test avg_comparison with the first month unavailable independently from the chosen years
+- `test_month2_unavailable`: test avg_comparison with the second month unavailable independently from the chosen years
+- `test_months_not_for_years_selected`: test avg_comparison with both months not available for the chosen years
+- `test_month1_not_for_year1_selected`: test avg_comparison with the first month not available for the first chosen year
+- `test_month2_not_for_year2_selected`: test avg_comparison with the second month not available for the second chosen year.
 
 
 
