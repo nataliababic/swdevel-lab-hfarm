@@ -130,7 +130,7 @@ Provide the file path to your CSV file with:
 ```file_path = "path/to/your/file.csv"```
 
 Load data from the CSV file with:
-```
+```python
 data = load_data(file_path)
 print(data.head()) 
 ```
@@ -149,7 +149,7 @@ Assuming 'data' is your modified DataFrame, select a file path:
 ```output_file_path = "path/to/save/your/file.csv"```
 
 Save the modified DataFrame to a new CSV file:
-```
+```python
 save_data(data, output_file_path)
 print("Data saved successfully!")
 ```
@@ -169,7 +169,7 @@ Pass a date to check if it's a holiday or weekend
 ```date_to_check = datetime(25, 12, 2020) ```
 
 Check if the date is a holiday or weekend in Italy:
-```
+```python
 result = is_holiday(date_to_check)
 print(result)
 ```
@@ -189,7 +189,7 @@ Performs a data preprocessing task:
 
 #### Example Usage
 Assuming 'raw_data' is your original DataFrame:
-```
+```python
 processed_data = preprocess_data(raw_data)
 print(processed_data.head())
 ```
@@ -209,7 +209,7 @@ Pass a duration string to convert to minutes
 ```duration = "2 hours 30 minutes" ```
 
 Convert the duration string to minutes
-```
+```python
 result_minutes = convert_to_minutes(duration)
 print(result_minutes)
 ```
@@ -226,7 +226,7 @@ A function that processes the Duration column to get the average duration in min
 
 #### Example Usage
 Assuming 'data' is your DataFrame
-```
+```python
 data_with_minutes = process_durata_column(data)
 print(data_with_minutes.head())
 ```
@@ -263,29 +263,29 @@ This second backend function is used to compute the average number of visitors i
 This function is composed by 3 different functions: 
 
 #### traffic_per_area
-**Parameters**: 
-`Traffic` (DataFrame): The input DataFrame containing traffic data.
-`Target_date` (str): dd-mm chosen by the client 
+- **Parameters**: 
+    `Traffic` (DataFrame): The input DataFrame containing traffic data.
+    `Target_date` (str): dd-mm chosen by the client 
 
-**Returns**: 
-`Result` (DataFrame): DataFrame with the total visitors per area expected for the target date. 
-`Result` (str): it returns "No data available for the given date." in case the date is not available or wrongly written. 
+- **Returns**: 
+    `Result` (DataFrame): DataFrame with the total visitors per area expected for the target date. 
+    `Result` (str): it returns "No data available for the given date." in case the date is not available or wrongly written. 
 
 #### highest_affluence 
-**Parameters**: 
-`Result` (DataFrame) :  the total visitors per area Fataframe created in traffic_per_area function
+- **Parameters**: 
+    `Result` (DataFrame):  the total visitors per area Fataframe created in traffic_per_area function
 
-**Returns**: 
-string with the area with the maximum amount of visitors
+- **Returns**: 
+    string with the area with the maximum amount of visitors
 
 #### lowest_affluence
-**Parameters**: 
-`Result` (DataFrame) :  the total visitors per area Fataframe created in traffic_per_area function
+- **Parameters**: 
+    - `Result` (DataFrame):  the total visitors per area Fataframe created in traffic_per_area function
 
-**Returns**: 
-string with the area with the minimum amount of visitors
+- **Returns**: 
+    - string with the area with the minimum amount of visitors
 
-#### Example Usage:
+#### Example Usage
 ```python
 # Import necessary libraries and modules
 from your_module import traffic_per_area, highest_affluence, lowest_affluence 
@@ -296,18 +296,18 @@ Result =  traffic_per_area (traffic, "01-10")
 print (result, “\n”,highest_affluence(result), “\n”, lowest_affluence(result))
 ```
 
-# Example output
-Area                                                               Forcasted_Visitors 
-2 Torri ( Inizio Portico Via Zamboni )                                    1462
-Facoltà di Giurisprudenza                                                 1616
-Palazzo Poggi                                                             1407
-Piazza Puntoni ( Via Zamboni )                                             679 
-Piazza Rossini ( Palazzo Malvezzi )                                       1834
-Piazza Scaravilli                                                         1174
-Piazza Verdi                                                              2071
-Porta San Donato                                                          2546
-Via Del Guasto                                                             821
-Via San Giacomo                                                           1735
+**Example output**
+Area                                                       Forecasted_Visitors 
+2 Torri (Inizio Portico Via Zamboni)                              1462
+Facoltà di Giurisprudenza                                         1616
+Palazzo Poggi                                                     1407
+Piazza Puntoni (Via Zamboni)                                       679 
+Piazza Rossini (Palazzo Malvezzi)                                 1834
+Piazza Scaravilli                                                 1174
+Piazza Verdi                                                      2071
+Porta San Donato                                                  2546
+Via Del Guasto                                                     821
+Via San Giacomo                                                   1735
 The Area with the highest tourism affluence is Porta San Donato with 2546 Forecasted Visitors 
 The Area with the lowest tourism affluence is Piazza Puntoni ( Via Zamboni ) with 679 Forecasted Visitors 
 
