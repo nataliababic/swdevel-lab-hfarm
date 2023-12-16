@@ -345,14 +345,15 @@ print(result)
 ##  Frontend
 
 ### Code
-The main functionality of the frontend code is to create three functions that directly recall the respective functions defined in the backend, verifying first that the link is available and, if so, saving the returned data. Then, such results are passed to the HTML templates. Three of the templates are dedicated to use each of the functionalities offered by the software, whereas ‘base.html’ is used to define some stylesheets, to import libraries, etc. Additionally, ‘index.html’ is used to define the core of the software, which is the homepage the user first sees when they access the website: here the weather API and the images have been added. From here linkages, through buttons, are available for the user to navigate to the pages described above. More in particular, such three templates each allow the user to access a form: each form allows to only select specific input, i.e. validates the input, to limit the errors that could occur from an inappropriate input being sent. 
+The main functionality of the frontend code is to create three functions that directly recall the respective functions defined in the backend, verifying first that the link is available and, if so, saving the returned data. Then, such results are passed to the HTML templates. Three of the templates are dedicated to use each of the functionalities offered by the software, i.e. `f1.html`, `f2.html`, `f3.html`, whereas `base.html` is used to define some stylesheets, to import libraries, etc. Additionally, `index.html` is used to define the core of the software, which is the homepage the user first sees when they access the website: here the weather API and the images have been added. From here linkages, through buttons, are available for the user to navigate to the pages described above. More in particular, such three templates each allow the user to access a form: each form allows to only select specific input, i.e. validates it, to limit the errors that could occur from an inappropriate input being sent. 
 Bootstrap has been used to enhance the graphics and visual appeal of the website. 
 
 ### Usage of the software
 Upon loading the homepage, the user receives information about the weather in the city of Bologna with temperature, description of the weather, wind speed, humidity and, in the event of rain, the mm of rain that has fallen, as well as four pictures that best represent the type of city Bologna is. The user is also able to use three buttons that specifically refer to the three functions made in the backend, and will redirect the user to a dedicated page. These buttons are:
-Average number of visitors by area and stay time
-Average number of visitors by date
-Comparison of number of visitors between two periods
+
+- Average number of visitors by area and stay time
+- Average number of visitors by date
+- Comparison of number of visitors between two periods
 
 In each dedicated function page, the user will be able to select, from a form selector, respectively the area and staytime, the target date, or the periods for comparison of which they want information about, and the website will provide the results immediately below the form, after communicating with the functions made in the backend.
 
