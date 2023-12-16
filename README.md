@@ -116,16 +116,16 @@ This will start both the frontend and backend containers and automatically insta
 
 ### Cleaning
 
-#### __**Load Data**__
+#### __Load Data__
 This function loads data from a CSV file into a DataFrame.
 
-#### Parameters
+##### Parameters
 - `file_path (str)` : the path to the CSV file.
 
-#### Returns
+##### Returns
 - `DataFrame` : the loaded data from the CSV file.
 
-#### Example Usage
+##### Example Usage
 Provide the file path to your CSV file with:
 ```file_path = "path/to/your/file.csv"```
 
@@ -136,14 +136,14 @@ print(data.head())
 ```
 
 
-#### __**Save Data**__
+#### __Save Data__
 This function saves the modified DataFrame into a new CSV file.
 
-#### Parameters
+##### Parameters
 - `data (DataFrame)` : the DataFrame to be saved.
 - `output_file_path (str)` : the path where to save the file.
 
-#### Example Usage
+##### Example Usage
 
 Assuming 'data' is your modified DataFrame, select a file path:
 ```output_file_path = "path/to/save/your/file.csv"```
@@ -155,16 +155,16 @@ print("Data saved successfully!")
 ```
 
 
-#### __**Is Holiday**__
+#### __Is Holiday__
 A function that determines if the passed day is a working or a non-working day with respect to the Italian calendar.
 
-#### Parameters
+##### Parameters
 - `date (datetime)` : the date as a datetime object.
 
 #### Returns
 - `bool` : true if the date is a holiday or a weekend, false otherwise.
 
-#### Example usage
+##### Example usage
 Pass a date to check if it's a holiday or weekend
 ```date_to_check = datetime(25, 12, 2020) ```
 
@@ -175,19 +175,19 @@ print(result)
 ```
 
 
-#### __**Preprocess Data**__
+#### __Preprocess Data__
 Performs a data preprocessing task:
 - Adding a Holiday column indicating where the date is a holiday or not.
 - Shifting the Duration column to Visitors for data in the year 2021.
 - Shifting Duration to 0 for data in the year 2021.
 
-#### Parameters
+##### Parameters
 - `data (DataFrame)` : the input DataFrame.
 
-#### Returns
+##### Returns
 - `dataFrame` : the preprocessed DataFrame.
 
-#### Example Usage
+##### Example Usage
 Assuming 'raw_data' is your original DataFrame:
 ```python
 processed_data = preprocess_data(raw_data)
@@ -195,16 +195,16 @@ print(processed_data.head())
 ```
 
 
-#### __**Convert to Minutes**__
+#### __Convert to Minutes__
 A function that converts strings containing the duration into minutes.
 
-#### Parameters
+##### Parameters
 - `duration_str (str)` : the duration string.
 
-#### Returns
+##### Returns
 - `int` : the duration in minutes.
 
-#### Example Usage
+##### Example Usage
 Pass a duration string to convert to minutes
 ```duration = "2 hours 30 minutes" ```
 
@@ -215,16 +215,16 @@ print(result_minutes)
 ```
 
 
-#### __**Process Durata Columns**__
+#### __Process Durata Columns__
 A function that processes the Duration column to get the average duration in minutes.
 
-#### Parameters
+##### Parameters
 - `data (DataFrame)` : the input DataFrame.
 
-#### Returns
+##### Returns
 - `DataFrame` : DataFrame with Duration column values converted to minutes.
 
-#### Example Usage
+##### Example Usage
 Assuming 'data' is your DataFrame
 ```python
 data_with_minutes = process_durata_column(data)
