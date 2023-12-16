@@ -7,7 +7,7 @@ The project’s aim is to allow the user to analyse Bologna's tourist traffic in
 - the day: from July 2019 to April 2021;
 - the stay time length, which varies from less than one minute to more than six hours. 
 
-# Table of Content : 
+# Table of Contents: 
 - Flask and FastAPI Dockerized Project 
     - Architecture 
     - Communication 
@@ -61,7 +61,7 @@ Bidirectional communication is established between the Frontend (Flask) and Back
 ## Project Structure 
 - ‘backend/’: FastAPI backend implementation 
     - ‘App/’: folder that contains main.py and the folder for modules. 
-    - ‘tests/‘: folder that contains the main tests files for the modules.
+    - ‘tests/’: folder that contains the main tests files for the modules.
     - Dockerfile: Dockerfile for building the backend image.
     - requirements.txt: List of Python dependencies for the backend.
 - ‘frontend/’: folder that contains Flask frontend implementation
@@ -89,6 +89,7 @@ The user should have Docker and Visual Studio Code installed. To proceed with th
    ```bash
    docker-compose up --build
    ```
+
 3. Open the "Docker" view in Visual Studio Code by clicking on the Docker icon in the Activity Bar.
 
 4. Under "Containers," you should see your running containers. Right-click on the container running your Flask or FastAPI application.
@@ -114,29 +115,17 @@ This will start both the frontend and backend containers and automatically insta
 ### Cleaning
 
 #### ** Load Data**
-
-
 This function loads data from a CSV file into a DataFrame
 
-
 #### Parameters:
-
-
     - `file_path (str)` : the path to the CSV file.
 
-
 #### Returns:
-
-
     - `dataFrame` : the loaded data from the CSV file.
 
-
 #### Example Usage
-
-
 Provide the file path to your CSV file with:
 ```file_path = "path/to/your/file.csv"```
-
 
 Load data from the CSV file with:
 ```data = load_data(file_path)
@@ -145,24 +134,16 @@ print(data.head())
 
 
 #### ** Save Data**
-
-
 This function saves the modified DataFrame into a new CSV file
 
-
 #### Parameters
-
-
     - `data (dataFrame)` : the DataFrame to be saved.
     - `output_file_path (str)` : the path where to save the file.
 
-
 #### Example Usage
-
 
 Assuming 'data' is your modified DataFrame select a file path:
 ```output_file_path = "path/to/save/your/file.csv"```
-
 
 Save the modified DataFrame to a new CSV file:
 ```save_data(data, output_file_path)
@@ -170,32 +151,18 @@ print("Data saved successfully!")
 ```
 
 
-
-
 #### ** Is Holiday**
-
-
 A function that determines if the passed day is a working or a non-working day with respect to the Italian calendar.
 
-
 #### Parameters
-
-
     - `date (datetime)` : the date as a datetime object.
 
-
 #### Returns
-
-
     - `bool` : true if the date is a holiday or a weekend, false otherwise.
 
-
 #### Example usage
-
-
 Pass a date to check if it's a holiday or weekend
 ```date_to_check = datetime(25, 12, 2020) ```
-
 
 Check if the date is a holiday or weekend in Italy:
 ```result = is_holiday(date_to_check)
@@ -203,62 +170,37 @@ print(result)
 ```
 
 
-
-
 #### ** Preprocess Data**
-
-
-    - Performs data preprocessing task:
+Performs a data preprocessing task:
     - Adding a Holiday column indicating where the date is a holiday or not.
-    - Shift the Duration column to Visitors for data in the year 2021.
-    - Shift Duration to 0 for data in the year 2021.
-
+    - Shifting the Duration column to Visitors for data in the year 2021.
+    - Shifting Duration to 0 for data in the year 2021.
 
 #### Parameters
-
-
     - `data (DataFrame)` : the input DataFrame.
 
-
 #### Returns
-
-
     - `dataFrame` : the preprocessed DataFrame.
 
-
 #### Example Usage
-
-
 Assuming 'raw_data' is your original DataFrame:
 ```processed_data = preprocess_data(raw_data)
 print(processed_data.head())
 ```
 
 
-
-
 #### ** Convert to Minutes**
-
-
 A function that converts strings containing the duration into minutes.
 
-
 #### Parameters
-
-
     - `duration_str (str)` : the duration string.
 
-
 #### Returns
-
-
     - `int` : the duration in minutes.
+
 #### Example Usage
-
-
 Pass a duration string to convert to minutes
 ```duration = "2 hours 30 minutes" ```
-
 
 Convert the duration string to minutes
 ```result_minutes = convert_to_minutes(duration)
@@ -266,29 +208,16 @@ print(result_minutes)
 ```
 
 
-
-
 #### ** Process Durata Columns**
-
-
 A function that processes the Duration column to get the average duration in minutes.
 
-
 #### Parameters
-
-
     - `data (DataFrame)` : the input DataFrame.
 
-
 #### Returns
-
-
     - `DataFrame` : DataFrame with Duration column values converted to minutes.
 
-
 #### Example Usage
-
-
 Assuming 'data' is your DataFrame
 ```data_with_minutes = process_durata_column(data)
 print(data_with_minutes.head())
@@ -296,21 +225,17 @@ print(data_with_minutes.head())
 
 
 ### Function 1: What are the average stay lengths in each area? 
-
 This backend function calculates the average number of visitors for a given area and stay time based on the provided traffic data.
 
 #### Parameters:
-
 - `df` (DataFrame): The input DataFrame containing traffic data.
 - `area` (str): The specific area for which to calculate the average stay length.
 - `stay_time` (str): The duration range for which to calculate the average stay length.
 
 #### Returns:
-
 - `tuple`: A tuple containing the average total visitors, average visitors on holidays, and average visitors on non-holidays. If the area or stay time is invalid, the function returns an appropriate error message.
 
 #### Example Usage:
-
 ```python
 # Import necessary libraries and modules
 from your_module import calculate_average_visitors
@@ -327,26 +252,32 @@ print(result)
 
 ### Function 2 : What is the average number of visitors per area on a specific date? 
 This second backend function is used to compute the average number of visitors in a specified date, as well as the maximum and minimum number of visitors from output. 
-This function is composed by 3 different functions : 
+This function is composed by 3 different functions: 
+
 **traffic_per_area**
-Parameters : 
-Traffic (DataFrame): The input DataFrame containing traffic data.
-Target_date (str) : dd-mm chosen by the client 
-	Returns: 
-Result (DataFrame)  : DataFrame with the total visitors per area expected for the target date. 
-Result (str) : it returns "No data available for the given date." in case the date is not available or wrongly written. 
+Parameters: 
+`Traffic` (DataFrame): The input DataFrame containing traffic data.
+`Target_date` (str): dd-mm chosen by the client 
+
+Returns: 
+`Result` (DataFrame): DataFrame with the total visitors per area expected for the target date. 
+`Result` (str): it returns "No data available for the given date." in case the date is not available or wrongly written. 
+
 **highest_affluence** 
-Parameters : 
-Result (DataFrame) :  the total visitors per area Fataframe created in traffic_per_area function
-	Returns: string with the area with the maximum amount of visitors
+Parameters: 
+`Result` (DataFrame) :  the total visitors per area Fataframe created in traffic_per_area function
+
+Returns: 
+string with the area with the maximum amount of visitors
 
 **lowest_affluence** 
-Parameters : 
-Result (DataFrame) :  the total visitors per area Fataframe created in traffic_per_area function
-	Returns: string with the area with the minimum amount of visitors
+Parameters: 
+`Result` (DataFrame) :  the total visitors per area Fataframe created in traffic_per_area function
+
+Returns: 
+string with the area with the minimum amount of visitors
 
 #### Example Usage:
-
 ```python
 # Import necessary libraries and modules
 from your_module import traffic_per_area, highest_affluence, lowest_affluence 
@@ -358,7 +289,6 @@ print (result, “\n”,highest_affluence(result), “\n”, lowest_affluence(re
 ```
 
 # Example output
-
 Area                                                               Forcasted_Visitors 
 2 Torri ( Inizio Portico Via Zamboni )                                    1462
 Facoltà di Giurisprudenza                                                 1616
@@ -377,7 +307,6 @@ The Area with the lowest tourism affluence is Piazza Puntoni ( Via Zamboni ) wit
 ### Function 3: what is the average number of visitors given two periods?
 
 #### Parameters:
-
 - `df` (DataFrame): The input DataFrame containing traffic data.
 - `year1` (str): The first year for which to choose the month to select the first period.
 - `month1` (str): The first month for which to compute the average number of visitors.
@@ -385,11 +314,9 @@ The Area with the lowest tourism affluence is Piazza Puntoni ( Via Zamboni ) wit
 - `month2` (str): The second month for which to compute the average number of visitors.
 
 #### Returns:
-
 - `(avg_visitors1, avg_visitors2)`: A tuple containing two integers, representing respectively the average number of visitors for the first and for the second period. 
 
 #### Example Usage:
-
 ```python
 # Import necessary libraries and modules
 from your_module import avg_comparison
@@ -424,18 +351,13 @@ In each dedicated function page, the user will be able to select, from a form se
 To ensure the correctness and reliability of the backend functions, a suite of tests has been developed using the ‘unittest’ and ‘pytest’ frameworks. These tests cover various scenarios and input cases to validate the functionality. 
 
 ## Tests of the cleaning process
-
-
 To run the tests, navigate to the root directory of your project and execute the following command:
 
 ```bash
 pytest tests/test_csv_cleaning.py
 ```
 
-
-###Test cases:
-
-
+### Test cases:
 - test_load_data_smoke: tests basic functionality for loading data from a CSV file into a Pandas DataFrame.
 
 - test_save_data_smoke: checks the basic functionality of saving a DataFrame into a new CSV file.
@@ -466,15 +388,13 @@ pytest tests/test_csv_cleaning.py
 
 
 ## Tests of function 1
-
 To run the tests, navigate to the root directory of your project and execute the following command:
 
 ```bash
 python -m unittest test_funct1.py
 ```
 
-###Test Cases:
-
+### Test Cases:
 TestAverageStayLength: this test class includes test cases for the average_stay_length function in the funct1 module.
 - test_average_stay_length_valid: Test with a valid area and stay time.
 - test_average_stay_length_invalid_area: Test with an invalid area.
@@ -485,32 +405,30 @@ TestConvertToMinutes: this test class includes test cases for the convert_to_min
 - test_convert_to_minutes_valid: Test with a valid duration string.
 - test_convert_to_minutes_invalid_format: Test with an invalid duration string format.
 
-## Tests of function 2
 
+## Tests of function 2
 To run the tests, navigate to the root directory of your project and execute the following command:
 
 ```bash
 python -m unittest test_funct2.py
 ```
 
-###Test Cases:
-
+### Test Cases:
 - TestCall: this test class includes test cases for functions traffic_per_area, highest_affluence and lowest_affluence in the funct2 module.
 - test_traffic_per_area : test traffic_per_area function with a valid date 
 - test _highest_affluence : test highest_affluence with a valid date 
 - test _lowest_affluence : test lowest_affluence with a valid date 
 - test_invalid_date : test traffic_per_are function in case an invalid date is chosen
 
-## Tests of function 3
 
+## Tests of function 3
 To run the tests, navigate to the root directory of your project and execute the following command:
 
 ```bash
 python -m unittest test_funct3.py
 ```
 
-###Test Cases:
-
+### Test Cases:
 - Test_avg_comparison: this test class includes all test cases for the function avg_comparison in the funct3 module.
 - test_average: test the avg_comparison function with valid input
 - test_invalid_input: test avg_comparison with invalid input types
