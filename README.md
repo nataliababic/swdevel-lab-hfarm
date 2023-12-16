@@ -116,14 +116,14 @@ This will start both the frontend and backend containers and automatically insta
 
 ### Cleaning
 
-#### ___**Load Data**___
+#### __**Load Data**__
 This function loads data from a CSV file into a DataFrame.
 
-#### Parameters:
-`file_path (str)` : the path to the CSV file.
+#### Parameters
+- `file_path (str)` : the path to the CSV file.
 
-#### Returns:
-`DataFrame` : the loaded data from the CSV file.
+#### Returns
+- `DataFrame` : the loaded data from the CSV file.
 
 #### Example Usage
 Provide the file path to your CSV file with:
@@ -136,12 +136,12 @@ print(data.head())
 ```
 
 
-#### ___**Save Data**___
+#### __**Save Data**__
 This function saves the modified DataFrame into a new CSV file.
 
 #### Parameters
-`data (DataFrame)` : the DataFrame to be saved.
-`output_file_path (str)` : the path where to save the file.
+- `data (DataFrame)` : the DataFrame to be saved.
+- `output_file_path (str)` : the path where to save the file.
 
 #### Example Usage
 
@@ -155,14 +155,14 @@ print("Data saved successfully!")
 ```
 
 
-#### ___**Is Holiday**___
+#### __**Is Holiday**__
 A function that determines if the passed day is a working or a non-working day with respect to the Italian calendar.
 
 #### Parameters
-`date (datetime)` : the date as a datetime object.
+- `date (datetime)` : the date as a datetime object.
 
 #### Returns
-`bool` : true if the date is a holiday or a weekend, false otherwise.
+- `bool` : true if the date is a holiday or a weekend, false otherwise.
 
 #### Example usage
 Pass a date to check if it's a holiday or weekend
@@ -175,17 +175,17 @@ print(result)
 ```
 
 
-#### ___**Preprocess Data**___
+#### __**Preprocess Data**__
 Performs a data preprocessing task:
 - Adding a Holiday column indicating where the date is a holiday or not.
 - Shifting the Duration column to Visitors for data in the year 2021.
 - Shifting Duration to 0 for data in the year 2021.
 
 #### Parameters
-`data (DataFrame)` : the input DataFrame.
+- `data (DataFrame)` : the input DataFrame.
 
 #### Returns
-`dataFrame` : the preprocessed DataFrame.
+- `dataFrame` : the preprocessed DataFrame.
 
 #### Example Usage
 Assuming 'raw_data' is your original DataFrame:
@@ -195,14 +195,14 @@ print(processed_data.head())
 ```
 
 
-#### ___**Convert to Minutes**___
+#### __**Convert to Minutes**__
 A function that converts strings containing the duration into minutes.
 
 #### Parameters
-`duration_str (str)` : the duration string.
+- `duration_str (str)` : the duration string.
 
 #### Returns
-`int` : the duration in minutes.
+- `int` : the duration in minutes.
 
 #### Example Usage
 Pass a duration string to convert to minutes
@@ -215,14 +215,14 @@ print(result_minutes)
 ```
 
 
-#### ___**Process Durata Columns**___
+#### __**Process Durata Columns**__
 A function that processes the Duration column to get the average duration in minutes.
 
 #### Parameters
-`data (DataFrame)` : the input DataFrame.
+- `data (DataFrame)` : the input DataFrame.
 
 #### Returns
-`DataFrame` : DataFrame with Duration column values converted to minutes.
+- `DataFrame` : DataFrame with Duration column values converted to minutes.
 
 #### Example Usage
 Assuming 'data' is your DataFrame
@@ -268,15 +268,15 @@ This function is composed by 3 different functions:
     `Target_date` (str): dd-mm chosen by the client 
 
 - **Returns**: 
-    `Result` (DataFrame): DataFrame with the total visitors per area expected for the target date. 
-    `Result` (str): it returns "No data available for the given date." in case the date is not available or wrongly written. 
+    - `Result` (DataFrame): DataFrame with the total visitors per area expected for the target date. 
+    - `Result` (str): it returns "No data available for the given date." in case the date is not available or wrongly written. 
 
 #### highest_affluence 
 - **Parameters**: 
-    `Result` (DataFrame):  the total visitors per area Fataframe created in traffic_per_area function
+    - `Result` (DataFrame):  the total visitors per area Fataframe created in traffic_per_area function
 
 - **Returns**: 
-    string with the area with the maximum amount of visitors
+    - string with the area with the maximum amount of visitors
 
 #### lowest_affluence
 - **Parameters**: 
