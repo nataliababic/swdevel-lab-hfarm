@@ -459,5 +459,8 @@ pytest tests/test_main.py
 - `test_make_average_error_handling`: Verifies error handling in make_average function for raising HTTPException.
 - `test_forecasted_visitors_error_handling`: Checks error handling in forecasted_visitors_per_area for HTTPException.
 
+#  Contributors 
+All members of the group have contributed actively and evenly to the project, with activities being partially split up in some cases and performed together in others. In particular, the process of writing the code for the backend functions has been assigned to specific members, as well as the tests. For the rest, the processes of choosing the csv file, cleaning it, choosing the backend functions, building the frontend, writing the readme file, have all been performed as a group, meeting both in person and online.
+
 
 
