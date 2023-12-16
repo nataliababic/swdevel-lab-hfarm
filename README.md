@@ -297,6 +297,7 @@ print (result, “\n”,highest_affluence(result), “\n”, lowest_affluence(re
 ```
 
 **Example output**
+```
 Area                                                       Forecasted_Visitors 
 2 Torri (Inizio Portico Via Zamboni)                              1462
 Facoltà di Giurisprudenza                                         1616
@@ -310,6 +311,7 @@ Via Del Guasto                                                     821
 Via San Giacomo                                                   1735
 The Area with the highest tourism affluence is Porta San Donato with 2546 Forecasted Visitors 
 The Area with the lowest tourism affluence is Piazza Puntoni ( Via Zamboni ) with 679 Forecasted Visitors 
+```
 
 
 ### Function 3: what is the average number of visitors given two periods?
