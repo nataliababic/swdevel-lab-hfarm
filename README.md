@@ -401,8 +401,8 @@ pytest tests/test_main.py
 - `test_make_average`: Validates the make_average endpoint for expected output with specific parameters.
 - `test_forecasted_visitors_per_area`: Checks if forecasted_visitors_per_area endpoint returns areas and 200 status.
 - `test_average_comparison`: Tests average_comparison endpoint for correct average values and status code 200.
-- `test_make_average_error_handling`: Verifies error handling in make_average function for raising HTTPException.
-- `test_forecasted_visitors_error_handling`: Checks error handling in forecasted_visitors_per_area for HTTPException.
+- `test_forecasted_visitors_error_handling`: Verifies error handling in forecasted_visitors_per_area function.
+- `test_avg_comp_error_handling`: Checks error handling in average_comparison function.
 
 
 ## Tests of function 1

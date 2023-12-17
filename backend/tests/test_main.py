@@ -156,39 +156,39 @@ def test_average_comparison():
     assert avg_second_period == expected_result["Avg second period"], "Avg second period mismatch"
 
 
-def test_make_average_error_handling():
-    """Test for error handling in make_average function.
-
-    Inputs:
-        Simulate the function call where it raises an HTTPException.
-
-    Outputs:
-        Asserts if the function raises an HTTPException with status code 404.
-    """
-    # Simulate a result that is a string, indicating an error message
-    result = "Area not found"
-    try:
-        # Call the function and expect it to raise an HTTPException
-        raise HTTPException(status_code=404, detail=result)
-    except HTTPException as e:
-        assert e.status_code == 404, "HTTPException status code mismatch"
-        assert e.detail == result, "HTTPException detail message mismatch"
-
-
 def test_forecasted_visitors_error_handling():
     """Test for error handling in forecasted_visitors_per_area function.
 
     Inputs:
-        Simulate the function call where it raises an HTTPException.
+        Simulate the function call where it raises an error.
 
     Outputs:
-        Asserts if the function raises an HTTPException with status code 404.
+        Asserts if the function raises an error.
     """
     # Simulate a result that is a string, indicating an error message
-    result = "Laughtale last poneglyph is in Alabasta"
-    try:
-        # Call the function and expect it to raise an HTTPException
-        raise HTTPException(status_code=404, detail=result)
-    except HTTPException as e:
-        assert e.status_code == 404, "HTTPException status code mismatch"
-        assert e.detail == result, "HTTPException detail message mismatch"
+    response = client.get("/forecasted-visitors/01-06")
+    assert response.status_code == 200, "Endpoint did not return successfully"
+
+    # Expected result
+    parsed_data = response.json()
+    expected_error = True
+    assert parsed_data['error'] == expected_error
+
+
+def test_avg_comp_error_handling():
+    """Test for error handling in average_comparison function.
+
+    Inputs:
+        Simulate the function call where it raises an error.
+
+    Outputs:
+        Asserts if the function raises an error.
+    """
+    # Simulate a result that is a string, indicating an error message
+    response = client.get("/average-period/2019/01/2019/01")
+    assert response.status_code == 200, "Endpoint did not return successfully"
+
+    # Expected result
+    parsed_data = response.json()
+    expected_error = True
+    assert parsed_data['error'] == expected_error
