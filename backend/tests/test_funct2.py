@@ -21,7 +21,7 @@ class TestCall(unittest.TestCase):
         '''
         result = traffic_per_area(traffic, "01-10")
         result_dc = result.to_dict(orient='dict')
-        self.assertEqual(result_dc, {'Area': {0: '2 Torri (Inizio Portico Via Zamboni)', 1: 'Facoltà Di Giurisprudenza', 2: 'Palazzo Poggi', 3: 'Piazza Puntoni (Via Zamboni)', 4: 'Piazza Rossini (Palazzo Malvezzi)', 5: 'Piazza Scaravilli', 6: 'Piazza Verdi', 7: 'Porta San Donato', 8: 'Via Del Guasto', 9: 'Via San Giacomo'}, 'Forcasted_Visitors': {0: 1462, 1: 1616, 2: 1407, 3: 679, 4: 1834, 5: 1174, 6: 2071, 7: 2546, 8: 821, 9: 1735}})
+        self.assertEqual(result_dc, {'Area': {0: '2 Torri (Inizio Portico Via Zamboni)', 1: 'Facoltà Di Giurisprudenza', 2: 'Palazzo Poggi', 3: 'Piazza Puntoni (Via Zamboni)', 4: 'Piazza Rossini (Palazzo Malvezzi)', 5: 'Piazza Scaravilli', 6: 'Piazza Verdi', 7: 'Porta San Donato', 8: 'Via Del Guasto', 9: 'Via San Giacomo'}, 'Forecasted_Visitors': {0: 1462, 1: 1616, 2: 1407, 3: 679, 4: 1834, 5: 1174, 6: 2071, 7: 2546, 8: 821, 9: 1735}})
 
     def test_highest_affluence(self):
         '''
@@ -30,7 +30,7 @@ class TestCall(unittest.TestCase):
         '''
         result = traffic_per_area(traffic, "01-10")
         result_h = highest_affluence(result)
-        self.assertEqual(result_h, "The Area with the highest tourism affluence is Porta San Donato with 2546 Forcasted Visitors")
+        self.assertEqual(result_h, "The Area with the highest tourism affluence is Porta San Donato with 2546 Forecasted Visitors")
 
     def test_lowest_affluence(self):
         '''
@@ -39,7 +39,7 @@ class TestCall(unittest.TestCase):
         '''
         result = traffic_per_area(traffic, "01-10")
         result_l = lowest_affluence(result)
-        self.assertEqual(result_l, "The Area with the lowest tourism affluence is Piazza Puntoni (Via Zamboni) with 679 Forcasted Visitors")
+        self.assertEqual(result_l, "The Area with the lowest tourism affluence is Piazza Puntoni (Via Zamboni) with 679 Forecasted Visitors")
 
     def test_invalid_date(self):
         '''

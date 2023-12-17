@@ -14,7 +14,7 @@ client = TestClient(app)
 def test_read_main():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"Bologna": "Hello World!!!!"}
+    assert response.json() == {"Bologna": "Backend reachable"}
 
 
 def test_make_average_smoke():
