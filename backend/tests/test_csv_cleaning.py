@@ -17,7 +17,8 @@ from app.mymodules.csv_cleaning import (
 
 
 def test_load_data_smoke():
-    """Test the load_data function for basic functionality.
+    """
+    Test the load_data function for basic functionality.
 
     Inputs:
         None
@@ -33,7 +34,8 @@ def test_load_data_smoke():
 
 
 def test_save_data_smoke():
-    """Test the save_data function for basic functionality.
+    """
+    Test the save_data function for basic functionality.
 
     Inputs:
         Generates a sample DataFrame and attempts to save it to a CSV file.
@@ -59,7 +61,8 @@ def test_save_data_smoke():
 
 
 def test_is_holiday():
-    """Test cases for the is_holiday function.
+    """
+    Test cases for the is_holiday function.
 
     Inputs:
         Predefined dates to check against weekends.
@@ -76,7 +79,8 @@ def test_is_holiday():
 
 
 def test_is_italian_holiday():
-    """Test the is_holiday function's identification of Italian holidays.
+    """
+    Test the is_holiday function's identification of Italian holidays.
 
     Inputs:
         Known Italian holiday dates for the test years [2019, 2020, 2021].
@@ -97,7 +101,8 @@ def test_is_italian_holiday():
 
 
 def test_is_not_holiday():
-    """Test the is_holiday function's identification of non-holidays.
+    """
+    Test the is_holiday function's identification of non-holidays.
 
     Inputs:
         Test dates that are weekdays but not holidays.
@@ -111,7 +116,8 @@ def test_is_not_holiday():
 
 
 def test_invalid_input_is_holiday():
-    """Test the is_holiday function's behavior with invalid input.
+    """
+    Test the is_holiday function's behavior with invalid input.
 
     Inputs:
         Provides a non-datetime object to check the function's handling.
@@ -125,7 +131,8 @@ def test_invalid_input_is_holiday():
 
 
 def test_is_holiday_with_zero():
-    """Test the is_holiday function's behavior with input as 0.
+    """
+    Test the is_holiday function's behavior with input as 0.
 
     Inputs:
         Test when the input is 0.
@@ -137,7 +144,8 @@ def test_is_holiday_with_zero():
 
 
 def test_is_holiday_with_none():
-    """Test the is_holiday function's behavior with input as None.
+    """
+    Test the is_holiday function's behavior with input as None.
 
     Inputs:
         Test when the input is None.
@@ -149,7 +157,8 @@ def test_is_holiday_with_none():
 
 
 def test_preprocess_data_smoke():
-    """Test the preprocess_data function for basic functionality.
+    """
+    Test the preprocess_data function for basic functionality.
 
     Inputs:
         A sample DataFrame
@@ -180,37 +189,43 @@ def test_preprocess_data_smoke():
 
 
 def test_convert_to_minutes_with_hours():
-    """Test convert_to_minutes with duration strings in hours."""
+    """
+    Test convert_to_minutes with duration strings in hours."""
     duration_1 = "More than 2 hours"
     assert convert_to_minutes(duration_1) == 120, "Conversion failed"
 
 
 def test_convert_to_minutes_with_minutes():
-    """Test convert_to_minutes with duration strings in minutes."""
+    """
+    Test convert_to_minutes with duration strings in minutes."""
     duration_2 = "Less than 30 minutes"
     assert convert_to_minutes(duration_2) == 30, "Conversion failed"
 
 
 def test_convert_to_minutes_with_empty_string():
-    """Test convert_to_minutes with an empty string."""
+    """
+    Test convert_to_minutes with an empty string."""
     empty_duration = ""
     assert convert_to_minutes(empty_duration) == 0, "Conversion failed"
 
 
 def test_convert_to_minutes_without_numbers():
-    """Test convert_to_minutes with a string not containing any numbers."""
+    """
+    Test convert_to_minutes with a string not containing any numbers."""
     no_number_duration = "The One Piece is real"
     assert convert_to_minutes(no_number_duration) == 0, "Conversion failed"
 
 
 def test_convert_to_minutes_with_none():
-    """Test convert_to_minutes with None."""
+    """
+    Test convert_to_minutes with None."""
     no_number_duration = None
     assert convert_to_minutes(no_number_duration) == 0, "Conversion failed"
 
 
 def test_process_durata_column_smoke():
-    """Smoke test for the process_durata_column function.
+    """
+    Smoke test for the process_durata_column function.
 
     Checks if the 'Duration' column is added and contains
     values represented as integers or floats,
