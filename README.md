@@ -460,6 +460,7 @@ Test_avg_comparison: this test class includes all test cases for the function av
 - `test_month1_not_for_year1_selected`: test avg_comparison with the first month not available for the first chosen year
 - `test_month2_not_for_year2_selected`: test avg_comparison with the second month not available for the second chosen year.
 
+> **NOTE:** Note that for function 3 the coverage rate is 94%, and not 100%, due to the fact that it recalls some functions that are in the csv_cleaning.py module and were tested in test_csv_cleaning.py. 
 
 #  Contributors 
 All members of the group have contributed actively and evenly to the project, with activities being partially split up in some cases and performed together in others. In particular, the process of writing the code for the backend functions has been assigned to specific members, as well as the tests. For the rest, the processes of choosing the csv file, cleaning it, choosing the backend functions, building the frontend, writing the readme file, have all been performed as a group, meeting both in person and online.
