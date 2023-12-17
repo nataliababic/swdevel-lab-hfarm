@@ -26,6 +26,7 @@ The project’s aim is to allow the user to analyse Bologna's tourist traffic in
     - Code 
     - Usage of the software 
 - Backend testing 
+    - Tests of the main
     - Tests of the cleaning process
     - Tests of function 1
     - Tests of function 2
@@ -37,7 +38,7 @@ This project uses Flask as the frontend and FastAPI as the backend to develop a 
 
 ## Architecture
 The project follows a simple client-server architecture.
-1. ** Frontend (Flask) : **
+1. **Frontend (Flask)**
     - It represents the user interface, the client side of the project. 
     - base.html: used to include libraries, stylesheets, and the navbar.
     - f1.html: used to define the page for the function 1 of the backend.
@@ -45,13 +46,13 @@ The project follows a simple client-server architecture.
     - f3.html: used to define the page for the function 3 of the backend.
     - index.html: used to define the homepage and to allow access to all other pages, mentioned above.
     - main.py: used as bridge to make the frontend and backend communicate; here all functions from the backend are recalled and results are returned, ready to be used in the html templates.
-2. ** Backend (FastAPI) : **
+2. **Backend (FastAPI)**
     - It represents the server or backend of the application.
-    - csv_cleaning.py : used to clean the main dataset and to add a column named “Holiday” that tells if a day is a working or a non-working day based on saturdays and sundays and on italian holidays.
-    - function_1.py : used calculates the average number of visitors for a given area and stay time based on the provided traffic data.
-    - function_2.py : used to calculate the average traffic for all areas, as well as the maximum and minimum traffic; provided a date
-    - function_3.py : used to compute the average number of visitors given two different months, of the same year or even two different years.
-3. ** Docker Compose : **
+    - csv_cleaning.py: used to clean the main dataset and to add a column named “Holiday” that tells if a day is a working or a non-working day based on saturdays and sundays and on italian holidays.
+    - function_1.py: used to calculate the average number of visitors for a given area and stay time based on the provided traffic data.
+    - function_2.py: used to calculate the average traffic for all areas, as well as the maximum and minimum traffic; provided a date
+    - function_3.py: used to compute the average number of visitors given two different months, of the same year or even two different years.
+3. **Docker Compose**
     - It serves the purpose of managing the backend and frontend together, and it also provides a tidy and equal working environment for all developers that want to reproduce or work on the project.
 
 ## Communication 
@@ -120,10 +121,10 @@ This will start both the frontend and backend containers and automatically insta
 This function loads data from a CSV file into a DataFrame.
 
 ##### Parameters
-- `file_path (str)` : the path to the CSV file.
+- `file_path (str)`: the path to the CSV file.
 
 ##### Returns
-- `DataFrame` : the loaded data from the CSV file.
+- `DataFrame`: the loaded data from the CSV file.
 
 ##### Example Usage
 Provide the file path to your CSV file with:
@@ -140,8 +141,8 @@ print(data.head())
 This function saves the modified DataFrame into a new CSV file.
 
 ##### Parameters
-- `data (DataFrame)` : the DataFrame to be saved.
-- `output_file_path (str)` : the path where to save the file.
+- `data (DataFrame)`: the DataFrame to be saved.
+- `output_file_path (str)`: the path where to save the file.
 
 ##### Example Usage
 
@@ -159,10 +160,10 @@ print("Data saved successfully!")
 A function that determines if the passed day is a working or a non-working day with respect to the Italian calendar.
 
 ##### Parameters
-- `date (datetime)` : the date as a datetime object.
+- `date (datetime)`: the date as a datetime object.
 
 #### Returns
-- `bool` : true if the date is a holiday or a weekend, false otherwise.
+- `bool`: true if the date is a holiday or a weekend, false otherwise.
 
 ##### Example usage
 Pass a date to check if it's a holiday or weekend
@@ -182,10 +183,10 @@ Performs a data preprocessing task:
 - Shifting Duration to 0 for data in the year 2021.
 
 ##### Parameters
-- `data (DataFrame)` : the input DataFrame.
+- `data (DataFrame)`: the input DataFrame.
 
 ##### Returns
-- `dataFrame` : the preprocessed DataFrame.
+- `dataFrame`: the preprocessed DataFrame.
 
 ##### Example Usage
 Assuming 'raw_data' is your original DataFrame:
@@ -199,10 +200,10 @@ print(processed_data.head())
 A function that converts strings containing the duration into minutes.
 
 ##### Parameters
-- `duration_str (str)` : the duration string.
+- `duration_str (str)`: the duration string.
 
 ##### Returns
-- `int` : the duration in minutes.
+- `int`: the duration in minutes.
 
 ##### Example Usage
 Pass a duration string to convert to minutes
@@ -219,10 +220,10 @@ print(result_minutes)
 A function that processes the Duration column to get the average duration in minutes.
 
 ##### Parameters
-- `data (DataFrame)` : the input DataFrame.
+- `data (DataFrame)`: the input DataFrame.
 
 ##### Returns
-- `DataFrame` : DataFrame with Duration column values converted to minutes.
+- `DataFrame`: DataFrame with Duration column values converted to minutes.
 
 ##### Example Usage
 Assuming 'data' is your DataFrame
@@ -432,9 +433,9 @@ python -m unittest test_funct2.py
 ### Test cases:
 TestCall: this test class includes test cases for functions traffic_per_area, highest_affluence and lowest_affluence in the funct2 module.
 - `test_traffic_per_area`: test traffic_per_area function with a valid date 
-- `test _highest_affluence` : test highest_affluence with a valid date 
-- `test _lowest_affluence` : test lowest_affluence with a valid date 
-- `test_invalid_date` : test traffic_per_are function in case an invalid date is chosen
+- `test _highest_affluence`: test highest_affluence with a valid date 
+- `test _lowest_affluence`: test lowest_affluence with a valid date 
+- `test_invalid_date`: test traffic_per_are function in case an invalid date is chosen
 
 
 ## Tests of function 3
