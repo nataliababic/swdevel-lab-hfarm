@@ -28,7 +28,7 @@
       <!-- form for stay time submission -->
       <label for="param2" class="form-label">Select stay time:</label>
       <select class="form-select" id="param2" name="param2" required>
-        <option value="Less 1 minute">Less than 1 minute</option>
+        <option value="less 1 minute">Less than 1 minute</option>
         <option value="from 1 to 5 minutes">From 1 to 5 minutes</option>
         <option value="from 5 to 10 minutes">From 5 to 10 minutes</option>
         <option value="from 10 to 20 minutes">From 10 to 20 minutes</option>
@@ -49,7 +49,7 @@
 <!-- response once the form has been submitted -->
 {% if avg_data %}
 <div class="container bg-white rounded shadow-sm p-4">
-  <h2 class="mb-4">Here's your results:</h2>
+  <h2 class="mb-4">Here's your results for {{ area }} and the staytime "{{ stay_time }}":</h2>
   <p class="mb-2">The average number of visitors for the area and stay time specified is {{avg_data[0] }}</p>
   <p class="mb-2">If only holidays are taken into account, the average number of visitors becomes {{avg_data[1] }}</p>
   <p class="mb-2">If only non-holidays are taken into account, the average number of visitors becomes {{ avg_data[2] }}</p>

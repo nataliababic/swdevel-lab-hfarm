@@ -31,7 +31,7 @@
         {{ weather_data['main']['temp'] }} °C
     </p>
     <p>
-        {% if weather_data['weather'][0]['description'].lower() == 'clear' %}
+        {% if weather_data['weather'][0]['description'].lower() == 'clear sky' %}
         <span class="bi bi-brightness-high"></span>
         {% elif weather_data['weather'][0]['description'].lower() == 'clouds' %}
         <span class="bi bi-cloud"></span>

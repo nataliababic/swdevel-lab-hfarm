@@ -4,6 +4,15 @@
 
 {% block content %}
 
+{% if avg_visitors and avg_visitors[2] == true %}
+    <div class="container mt-5">
+        <!-- Bootstrap Alert -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Warning!</strong> The input selected is not available. Please consider the months and years available and try again.
+        </div>
+    </div>
+{% endif %}
+
 <div class="container mt-5 text-left">
     <h2 style="font-size: 1.5em">These are the months available for each year</h2>
 
@@ -80,16 +89,16 @@
                 <option value="12">December</option>
             </select>
         </div>
-        <button style="background-color: darkred; color: white; padding: 10px 10px; border: none; border-radius: 5px; cursor: pointer;" type="submit">Submit</button>
+        <button style="background-color: darkred; color: white; padding: 10px 10px; 
+        border: none; border-radius: 5px; cursor: pointer;" type="submit">Submit</button>
         
     </form>
 
 </div>
-
 <!-- response once the form has been submitted -->
-{% if avg_visitors %}
+{% if avg_visitors and avg_visitors[2] == false %}
 <div class="container mt-5 text-center">
-    <h2>Here's your results:</h2>
+    <h2>Here's your results for {{ month1}}-{{ year1 }} and {{ month2 }}-{{ year2 }}:</h2>
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">First Period</h5>

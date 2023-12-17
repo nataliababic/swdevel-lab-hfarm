@@ -11,11 +11,7 @@ from flask import Flask, render_template, request
 # Import the requests library to make HTTP requests
 import requests
 
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'  # Replace with a secure secret key
 
 
 # Define a route for the root URL ('/')
@@ -85,7 +81,8 @@ def getF1(param1, param2):
     avg_non_holiday = response.json().get('avg_non_holiday',
                                           'Data not available')
 
-    # Return a tuple containing average total, holiday, and non-holiday visitors
+    # Return a tuple containing average total, holiday,
+    # and non-holiday visitors
     return avg_total, avg_holiday, avg_non_holiday
 
 
@@ -105,10 +102,13 @@ def f1():
     # Check if 'param1' and 'param2' are set
     if request.args.get('param1') and request.args.get('param2'):
         # Call the getF1 function with provided parameters
-        avg_data = getF1(request.args.get('param1'), request.args.get('param2'))
+        avg_data = getF1(request.args.get('param1'),
+                         request.args.get('param2'))
 
     # Render the 'f1.html' template with the obtained data
-    return render_template('f1.html', avg_data=avg_data)
+    return render_template('f1.html', avg_data=avg_data,
+                           area=request.args.get('param1'),
+                           stay_time=request.args.get('param2'))
 
 
 def getF2(param1):
@@ -141,10 +141,11 @@ def getF2(param1):
                                         'Data not available')
     min_affluence = response.json().get('Lowest affluence',
                                         'Data not available')
+    error = response.json().get('error', 'Data not available')
 
     # Return a tuple containing affluence data for
     # each area, highest affluence, and lowest affluence
-    return all_areas, max_affluence, min_affluence
+    return all_areas, max_affluence, min_affluence, error
 
 
 @app.route('/f2', methods=['GET', 'POST'])
@@ -182,7 +183,7 @@ def f2():
         affluence = getF2(param3)
 
     # Render the 'f2.html' template with the obtained data
-    return render_template('f2.html', affluence=affluence)
+    return render_template('f2.html', affluence=affluence, target_date=param3)
 
 
 def getF3(param1, param2, param3, param4):
@@ -216,9 +217,9 @@ def getF3(param1, param2, param3, param4):
                                           'Data not available')
     avg_secondperiod = response.json().get('Avg second period',
                                            'Data not available')
-
+    error = response.json().get('error', 'Data not available')
     # Return a tuple containing average data for the first and second periods
-    return avg_firstperiod, avg_secondperiod
+    return avg_firstperiod, avg_secondperiod, error
 
 
 @app.route('/f3', methods=['GET', 'POST'])
@@ -244,56 +245,12 @@ def f3():
                              request.args.get('param7'))
 
     # Render the 'f3.html' template with the obtained data
-    return render_template('f3.html', avg_visitors=avg_visitors)
+    return render_template('f3.html', avg_visitors=avg_visitors,
+                           year1=request.args.get('param4'),
+                           month1=request.args.get('param5'),
+                           year2=request.args.get('param6'),
+                           month2=request.args.get('param7'))
 
-
-'''
-def fetch_date_from_backend():
-    """
-    Function to fetch the current date from the backend.
-
-    Returns:
-        str: Current date in ISO format.
-    """
-    backend_url = 'http://backend/get-date'  # Adjust the URL based on your backend configuration
-    try:
-        response = requests.get(backend_url)
-        response.raise_for_status()  # Raise an HTTPError for bad responses
-        return response.json().get('date', 'Date not available')
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching date from backend: {e}")
-        return 'Date not available'
-'''
-
-
-'''
-@app.route('/internal', methods=['GET', 'POST'])
-def internal():
-    """
-    Render the internal page.
-
-    Returns:
-        str: Rendered HTML content for the index page.
-    """
-    form = QueryForm()
-    error_message = None  # Initialize error message
-
-    if form.validate_on_submit():
-        person_name = form.person_name.data
-        # Make a GET request to the FastAPI backend
-        fastapi_url = f'{FASTAPI_BACKEND_HOST}/query/{person_name}'
-        response = requests.get(fastapi_url)
-
-        if response.status_code == 200:
-            # Extract and display the result from the FastAPI backend
-            data = response.json()
-            result = data.get('birthday', f'Error: Birthday not available for {person_name}')
-            return render_template('internal.html', form=form, result=result, error_message=error_message)
-        else:
-            error_message = f'Error: Unable to fetch birthday for {person_name} from FastAPI Backend'
-
-    return render_template('internal.html', form=form, result=None, error_message=error_message)
-'''
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)

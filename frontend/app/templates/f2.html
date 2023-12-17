@@ -4,6 +4,30 @@
 
 {% block content %}
 
+<!-- Check if affluence is set but contains an error -->
+{% if affluence and affluence[3] == true %}
+    <div class="container mt-5">
+        <!-- Bootstrap Alert -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Warning!</strong>
+            <br>
+            <span>
+                The input selected is not available. Please try with some other target date.
+                <br>
+                Other months may also have some target dates missing: if so, try changing day but not month.
+            </span>
+            
+        </div>
+    </div>
+{% endif %}
+
+<!-- Notification that some months are not available -->
+<div class="container mt-5 text-left">
+    <p style="text-align: left; margin-bottom: 10px;">
+        <strong><span>Note that May and June are not available at all.</span></strong>
+    </p>
+</div>
+
 <div class="container p-4 bg-white rounded shadow-sm">
     <h2 class="text-center mb-4"> Select date to display average number of visitors </h2>
 
@@ -27,27 +51,28 @@
                 {% endfor %}
             </select>
         </div>
-        <button style="background-color: darkred; color: white; padding: 10px 10px; border: none; border-radius: 5px; cursor: pointer;" type="submit">Submit</button>
+        <button style="background-color: darkred; color: white; padding: 10px 10px; 
+        border: none; border-radius: 5px; cursor: pointer;" type="submit">Submit</button>
     </form>
 
-    <!-- response once the form has been submitted -->
-    {% if affluence %}
+    <!-- response once the form has been submitted and no error is present -->
+    {% if affluence and affluence[3] == false %}
     <div class="container mt-5 text-center">
-        <h2>Here's your results:</h2>
+        <h2>Here's your results for target date {{ target_date }}:</h2>
         <!-- a table is created for the first answer, which returns affluence for each area for the date specified-->
         <div class="card">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Area</th>
-                        <th>Forecasted Visitors</th>
+                        <th>Visitors</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for area in affluence[0] %}
                     <tr>
                         <td>{{ area['Area'] }}</td>
-                        <td>{{ area['Forcasted_Visitors'] }}</td>
+                        <td>{{ area['Forecasted_Visitors'] }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

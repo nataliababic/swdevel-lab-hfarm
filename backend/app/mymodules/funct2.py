@@ -1,66 +1,72 @@
-# First we import all the needed datasets
+# Import needed library
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse
-from datetime import datetime
-import pandas as pd
-import os
+
 app = FastAPI()
 
 
-# we start defining the traffic_per_area function linking the name of each area
-# to the number of visotors on the input day.
-
+# Define the traffic_per_area function linking the name of each area
+# to the number of visitors on the input day.
 def traffic_per_area(traffic, target_date):
     '''
     Get the total number of visitors per area for a given date.
-    Parameters:
+
+    Args:
     data (DataFrame): The input DataFrame containing date, area, and visitors.
-    target_date (str): The date in 'YYYY-MM-DD' format.
+    target_date (str): The date in 'DD-MM' format.
 
     Returns:
-    Result: DataFrame with total visitors per area for the given date.
+    result (DataFrame): df with total visitors per area for the given date.
     '''
 
-    # Filter data for the years 2019, 2020, and 2021
-    filtered_traffic = traffic[traffic['Date'].dt.year.isin([2019, 2020, 2021]) &
-                               (traffic['Date'].dt.strftime('%d-%m') == target_date)]
+    # Format dates to compare them with target date
+    formatted_dates = traffic['Date'].dt.strftime('%d-%m')
 
-    # Return a message in case the date is not available
-    if filtered_traffic.empty:
+    # Check whether target date is in formatted dates
+    if target_date in formatted_dates.values:  # .values returns array
+        filtered_traffic = traffic[formatted_dates == target_date]
+
+        # Calculate the mean visitors per area for the given date
+        result = filtered_traffic.groupby('Area')['Visitors'].mean().round(decimals=0).astype(int).reset_index()
+        result.columns = ['Area', 'Forecasted_Visitors']
+
+        return result
+
+    # Return a message in case the target date is not available
+    else:
         return "No data available for the given date."
-
-    # Calculate the mean visitors per area for the given date
-    result = filtered_traffic.groupby('Area')['Visitors'].mean().round(decimals=0).astype(int).reset_index()
-    result.columns = ['Area', 'Forecasted_Visitors']
-
-    return result
 
 
 # Define the area with the highest affluence
 def highest_affluence(result):
-
     '''
-    Input: Result (DataFrame), the total visitors per area Dataframe
+    Get the area with the maximum number of visitors for the target date.
+
+    Args:
+    Result (DataFrame), the total visitors per area Datarame
     created in traffic_per_area function
 
-    Output : the area with the maximum amount of visitors
+    Returns:
+    the area with the maximum amount of visitors
     '''
 
     max_area_row = result.loc[result['Forecasted_Visitors'].idxmax()]
     max_area = max_area_row['Area']
     mean_visitors = max_area_row['Forecasted_Visitors']
 
-    return 'The Area with the highest tourism affluence is {} with {} Forcaseted Visitors'.format(max_area, mean_visitors)
+    return 'The Area with the highest tourism affluence is {} with {} Forecasted Visitors'.format(max_area, mean_visitors)
 
 
 # Define the area with lowest affluence
 def lowest_affluence(result):
-
     '''
-    Input: Result (DataFrame), the total visitors per area Dataframe
+    Get the area with the minimum number of visitors for the target date.
+
+    Args:
+    Result (DataFrame), the total visitors per area Dataframe
     created in traffic_per_area function
 
-    Output : the area with the manimum amount of visitors
+    Returns:
+    the area with the minimum amount of visitors
     '''
 
     min_area_row = result.loc[result['Forecasted_Visitors'].idxmin()]
