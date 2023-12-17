@@ -5,7 +5,8 @@ from datetime import datetime
 
 
 def load_data(file_path):
-    """Load data from a CSV file.
+    """
+    Load data from a CSV file.
 
     Parameters:
     file_path (str): The path to the CSV file.
@@ -18,7 +19,8 @@ def load_data(file_path):
 
 
 def save_data(data, output_file_path):
-    """Save data to a CSV file.
+    """
+    Save data to a CSV file.
 
     Parameters:
     data (DataFrame): The DataFrame to be saved.
@@ -28,7 +30,8 @@ def save_data(data, output_file_path):
 
 
 def is_holiday(date):
-    """Check if a date is a holiday in Italy.
+    """
+    Check if a date is a holiday in Italy.
 
     Parameters:
     date (datetime): The date as a datetime object.
@@ -50,7 +53,8 @@ def is_holiday(date):
 
 
 def preprocess_data(data):
-    """Preprocess the data.
+    """
+    Preprocess the data.
 
     Add the Holiday column.
     Shifts 'Duration' values to 'Visitors' column for the year 2021.
@@ -88,7 +92,8 @@ def preprocess_data(data):
 import re
 
 def convert_to_minutes(duration_str):
-    """Convert strings containing the duration to minutes.
+    """
+    Convert strings containing the duration to minutes.
 
     Parameters:
     duration_str (str): The duration string.
@@ -114,7 +119,8 @@ def convert_to_minutes(duration_str):
 
 
 def process_durata_column(data):
-    """Process the Duration column to get average duration in minutes.
+    """
+    Process the Duration column to get average duration in minutes.
 
     Parameters:
     data (DataFrame): The input DataFrame.
