@@ -163,7 +163,7 @@ def f2():
         str: Rendered HTML content for the 'f2' route.
     '''
     affluence = None
-
+    param3 = None
     # Check if 'daySelection' is set (the form requires both to be compiled)
     # So, if 'daySelection' is set, 'monthSelection' is also set
     if request.args.get('daySelection'):
