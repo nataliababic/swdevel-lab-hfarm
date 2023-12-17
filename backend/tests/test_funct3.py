@@ -17,7 +17,7 @@ sys.path.append('/app')
 from app.mymodules.funct3 import avg_comparison
 
 
-class Test_avg_comparison(unittest.TestCase):
+class TestAverageComparison(unittest.TestCase):
     '''
     Test cases for the avg_comparison function.
     '''
