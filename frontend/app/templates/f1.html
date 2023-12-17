@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %} By area & staytime {% endblock %}
+
+{% block content %}
+<div class="container bg-white rounded shadow-sm p-4 ">
+  <h2 class="text-center mb-4"> Select area and stay time to display average number of visitors </h2>
+  <!-- when submitted, form send info to the first function -->
+  <form method="get" action="/f1">
+    <div class="mb-3">
+      <!-- form for area submission -->
+      <label for="param1" class="form-label">Select area:</label>
+      <select class="form-select" id="param1" name="param1" required>
+        <option value="Piazza Puntoni (Via Zamboni)">Piazza Puntoni (Via Zamboni)</option>
+        <option value="2 Torri (Inizio Portico Via Zamboni)">2 Torri (Inizio Portico Via Zamboni)</option>
+        <option value="Piazza Rossini (Palazzo Malvezzi)">Piazza Rossini (Palazzo Malvezzi)</option>
+        <option value="Facoltà Di Giurisprudenza">Facoltà Di Giurisprudenza</option>
+        <option value="Piazza Verdi">Piazza Verdi</option>
+        <option value="Porta San Donato">Porta San Donato</option>
+        <option value="Piazza Scaravilli">Piazza Scaravilli</option>
+        <option value="Via San Giacomo">Via San Giacomo</option>
+        <option value="Via Del Guasto">Via Del Guasto</option>
+        <option value="Palazzo Poggi">Palazzo Poggi</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <!-- form for stay time submission -->
+      <label for="param2" class="form-label">Select stay time:</label>
+      <select class="form-select" id="param2" name="param2" required>
+        <option value="less 1 minute">Less than 1 minute</option>
+        <option value="from 1 to 5 minutes">From 1 to 5 minutes</option>
+        <option value="from 5 to 10 minutes">From 5 to 10 minutes</option>
+        <option value="from 10 to 20 minutes">From 10 to 20 minutes</option>
+        <option value="from 20 to 40 minutes">From 20 to 40 minutes</option>
+        <option value="from 40 to 60 minutes">From 40 to 60 minutes</option>
+        <option value="from 60 to 90 minutes">From 60 to 90 minutes</option>
+        <option value="from 90 to 120 minutes">From 90 to 120 minutes</option>
+        <option value="from 2 to 3 hours">From 2 to 3 hours</option>
+        <option value="from 3 to 4 hours">From 3 to 4 hours</option>
+        <option value="from 4 to 6 hours">From 4 to 6 hours</option>
+        <option value="over 6 hours">Over 6 hours</option>
+      </select>
+    </div>
+    <button style="background-color: darkred; color: white; padding: 10px 10px; border: none; border-radius: 5px; cursor: pointer;" type="submit">Submit</button>
+  </form>
+</div>
+
+<!-- response once the form has been submitted -->
+{% if avg_data %}
+<div class="container bg-white rounded shadow-sm p-4">
+  <h2 class="mb-4">Here's your results for {{ area }} and the staytime "{{ stay_time }}":</h2>
+  <p class="mb-2">The average number of visitors for the area and stay time specified is {{avg_data[0] }}</p>
+  <p class="mb-2">If only holidays are taken into account, the average number of visitors becomes {{avg_data[1] }}</p>
+  <p class="mb-2">If only non-holidays are taken into account, the average number of visitors becomes {{ avg_data[2] }}</p>
+</div>
+{% endif %}
+
+{% endblock %}
