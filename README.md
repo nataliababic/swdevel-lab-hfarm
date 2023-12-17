@@ -383,6 +383,7 @@ pytest tests/test_csv_cleaning.py
 - `test_convert_to_minutes_with_minutes`: checks the conversion of duration strings in minutes to minutes (no change).  
 - `test_convert_to_minutes_with_empty_string`: tests the conversion of an empty duration string.   
 - `test_convert_to_minutes_without_numbers`: verifies the behaviour of the conversion function with duration strings not containing any numbers.
+- `test_convert_to_minutes_with_nonw`: verifies the behaviour of the conversion function with duration strings set as None.
 - `test_process_durata_column_smoke`: validates the functionality of processing the 'Duration' column to ensure the presence and type of converted values in minutes.
 
 ## Tests of main.py

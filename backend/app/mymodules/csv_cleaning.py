@@ -44,12 +44,9 @@ def is_holiday(date):
 
     italy_holidays = holidays.Italy(years=[2019, 2020, 2021])
 
-    try:
-        is_weekend = date.weekday() >= 5  # Saturday or Sunday
-        is_official_holiday = date in italy_holidays
-        return is_weekend or is_official_holiday
-    except AttributeError:
-        return False  # Return False if error occurs during date operations
+    is_weekend = date.weekday() >= 5  # Saturday or Sunday
+    is_official_holiday = date in italy_holidays
+    return is_weekend or is_official_holiday
 
 
 def preprocess_data(data):
