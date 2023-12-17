@@ -1,6 +1,6 @@
 import os
 import sys
-from fastapi.testclient import TestClient
+import pytest
 import pandas as pd
 from datetime import datetime
 import holidays
@@ -203,6 +203,12 @@ def test_convert_to_minutes_without_numbers():
     assert convert_to_minutes(no_number_duration) == 0, "Conversion failed"
 
 
+def test_convert_to_minutes_with_none():
+    """Test convert_to_minutes with None."""
+    no_number_duration = None
+    assert convert_to_minutes(no_number_duration) == 0, "Conversion failed"
+
+
 def test_process_durata_column_smoke():
     """Smoke test for the process_durata_column function.
 
@@ -255,6 +261,7 @@ test_convert_to_minutes_with_hours()
 test_convert_to_minutes_with_minutes()
 test_convert_to_minutes_with_empty_string()
 test_convert_to_minutes_without_numbers()
+test_convert_to_minutes_with_none()
 
 # Run the smoke test for the process_durata_columns function
 test_process_durata_column_smoke()
