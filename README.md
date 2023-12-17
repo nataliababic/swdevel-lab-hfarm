@@ -384,6 +384,24 @@ pytest tests/test_csv_cleaning.py
 - `test_convert_to_minutes_without_numbers`: verifies the behaviour of the conversion function with duration strings not containing any numbers.
 - `test_process_durata_column_smoke`: validates the functionality of processing the 'Duration' column to ensure the presence and type of converted values in minutes.
 
+## Tests of main.py
+To run the tests, navigate to the root directory of your project and execute the following command:
+
+```bash
+pytest tests/test_main.py
+```
+
+### Test cases:
+- `test_read_main`: Tests the read_main endpoint for expected JSON response and status code.
+- `test_make_average_smoke`: Validates the make_average endpoint's response with mock parameters.
+- `test_forecasted_visitors_per_area_smoke`: Checks the forecasted_visitors_per_area endpoint for response status.
+- `test_average_comparison_smoke`: Ensures the average_comparison endpoint responds with status code 200.
+- `test_make_average`: Validates the make_average endpoint for expected output with specific parameters.
+- `test_forecasted_visitors_per_area`: Checks if forecasted_visitors_per_area endpoint returns areas and 200 status.
+- `test_average_comparison`: Tests average_comparison endpoint for correct average values and status code 200.
+- `test_make_average_error_handling`: Verifies error handling in make_average function for raising HTTPException.
+- `test_forecasted_visitors_error_handling`: Checks error handling in forecasted_visitors_per_area for HTTPException.
+
 
 ## Tests of function 1
 To run the tests, navigate to the root directory of your project and execute the following command:
@@ -392,7 +410,7 @@ To run the tests, navigate to the root directory of your project and execute the
 python -m unittest test_funct1.py
 ```
 
-### Test Cases:
+### Test cases:
 TestAverageStayLength: this test class includes test cases for the average_stay_length function in the funct1 module.
 - `test_average_stay_length_valid`: Test with a valid area and stay time.
 - `test_average_stay_length_invalid_area`: Test with an invalid area.
@@ -411,7 +429,7 @@ To run the tests, navigate to the root directory of your project and execute the
 python -m unittest test_funct2.py
 ```
 
-### Test Cases:
+### Test cases:
 TestCall: this test class includes test cases for functions traffic_per_area, highest_affluence and lowest_affluence in the funct2 module.
 - `test_traffic_per_area`: test traffic_per_area function with a valid date 
 - `test _highest_affluence` : test highest_affluence with a valid date 
@@ -426,7 +444,7 @@ To run the tests, navigate to the root directory of your project and execute the
 python -m unittest test_funct3.py
 ```
 
-### Test Cases:
+### Test cases:
 Test_avg_comparison: this test class includes all test cases for the function avg_comparison in the funct3 module.
 - `test_average`: test the avg_comparison function with valid input
 - `test_invalid_input`: test avg_comparison with invalid input types
@@ -440,24 +458,6 @@ Test_avg_comparison: this test class includes all test cases for the function av
 - `test_month1_not_for_year1_selected`: test avg_comparison with the first month not available for the first chosen year
 - `test_month2_not_for_year2_selected`: test avg_comparison with the second month not available for the second chosen year.
 
-
-## Tests of Main
-To run the tests, navigate to the root directory of your project and execute the following command:
-
-```bash
-pytest tests/test_main.py
-```
-
-### Test cases:
-- `test_read_main`: Tests the read_main endpoint for expected JSON response and status code.
-- `test_make_average_smoke`: Validates the make_average endpoint's response with mock parameters.
-- `test_forecasted_visitors_per_area_smoke`: Checks the forecasted_visitors_per_area endpoint for response status.
-- `test_average_comparison_smoke`: Ensures the average_comparison endpoint responds with status code 200.
-- `test_make_average`: Validates the make_average endpoint for expected output with specific parameters.
-- `test_forecasted_visitors_per_area`: Checks if forecasted_visitors_per_area endpoint returns areas and 200 status.
-- `test_average_comparison`: Tests average_comparison endpoint for correct average values and status code 200.
-- `test_make_average_error_handling`: Verifies error handling in make_average function for raising HTTPException.
-- `test_forecasted_visitors_error_handling`: Checks error handling in forecasted_visitors_per_area for HTTPException.
 
 #  Contributors 
 All members of the group have contributed actively and evenly to the project, with activities being partially split up in some cases and performed together in others. In particular, the process of writing the code for the backend functions has been assigned to specific members, as well as the tests. For the rest, the processes of choosing the csv file, cleaning it, choosing the backend functions, building the frontend, writing the readme file, have all been performed as a group, meeting both in person and online.
