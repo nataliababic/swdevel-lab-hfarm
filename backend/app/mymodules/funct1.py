@@ -55,18 +55,18 @@ def average_stay_length(df, area, stay_time):
     # Convert the duration string to minutes
     stay_minutes = convert_to_minutes(stay_time)
 
-    # If area and stay_time are valid, proceed with the selection of the data 
+    # If area and stay_time are valid, proceed with the selection of the data
     if area in df['Area'].values and stay_minutes in df['Duration'].values:
         filtered_df = df[df['Area'] == area]
-        filtered_df = filtered_df[(filtered_df['Duration'] >= duration_mapping[stay_time][0]) &(filtered_df['Duration'] <= duration_mapping[stay_time][1])]
-    
+        filtered_df = filtered_df[(filtered_df['Duration'] >= duration_mapping[stay_time][0]) & (filtered_df['Duration'] <= duration_mapping[stay_time][1])]
+
     # Calculate the averages for total, holiday, and non-holiday visitors
     avg_tot = int(filtered_df['Visitors'].mean())
     avg_holiday = int(
-        filtered_df[filtered_df['Holiday'] == True]['Visitors'].mean()
+        filtered_df[filtered_df['Holiday'] is True]['Visitors'].mean()
     )
     avg_non_holiday = int(
-        filtered_df[filtered_df['Holiday'] == False]['Visitors'].mean()
+        filtered_df[filtered_df['Holiday'] is False]['Visitors'].mean()
     )
 
     return (avg_tot, avg_holiday, avg_non_holiday)
