@@ -74,7 +74,8 @@ Bidirectional communication is established between the Frontend (Flask) and Back
 # Prerequisites and Installation
 
 ## Prerequisites 
-The user should have Docker and Visual Studio Code installed. To proceed with the installation and configuration, the user should have the URL of the remote directory and Docker open on the machine. Finally, on Visual Studio Code the user should have installed the following extensions: Python, the Docker Extension and the Remote Development Tools.
+First of all, the user must download the "combined_bologna-daily-duration-distribution.csv" CSV file from the "Open Data - Comune di Bologna" website at the following link: https://opendata.comune.bologna.it/explore/dataset/combined_bologna-daily-duration-distribution/export/. 
+Then the user should have Docker and Visual Studio Code installed. To proceed with the installation and configuration, the user should have the URL of the remote directory and Docker open on the machine. Finally, on Visual Studio Code the user should have installed the following extensions: Python, the Docker Extension and the Remote Development Tools.
 
 ##  Installation and configuration 
 
@@ -119,6 +120,8 @@ This will start both the frontend and backend containers and automatically insta
 
 #### __Load Data__
 This function loads data from a CSV file into a DataFrame.
+The user should rename the the CSV file name "combined_bologna-daily-duration-distribution.csv" into "bologna.csv".
+Then, the user should rename the columns "Data;Area;Durata;Numero Visitatori" into "Date;Area;Duration;Visitors".
 
 ##### Parameters
 - `file_path (str)`: the path to the CSV file.
