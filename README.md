@@ -2,9 +2,8 @@
 
 This file has the objective to explain in detail the project for Lab of Software Project Development, made by: Anna Citon (890729), Alessio Pitteri (888551), Lorenzo Paro (889505), Natalia Babic (890577) and Rachele Suardi (890590).
 The project’s aim is to allow the user to analyse Bologna's tourist traffic in main squares and other places of interest. Indeed, the bologna.csv file provides information about the number of visitors depending on:
-- the area: Due Torri, Facoltà di Giurisprudenza, Palazzo Poggi, Piazza Puntoni, Piazza Rossini, Piazza
-  Scaravilli, Piazza Verdi, Porta San Donato, Via Del Guasto, and Via San Giacomo;
-- the day: from July 2019 to April 2021;
+- the area: Due Torri, Facoltà di Giurisprudenza, Palazzo Poggi, Piazza Puntoni, Piazza Rossini, Piazza Scaravilli, Piazza Verdi, Porta San Donato, Via Del Guasto, Piazza Rossini, and Via San Giacomo;
+- the day: from July 2019 to April 2021 (in the format yyyy-mm-dd);
 - the stay time length, which varies from less than one minute to more than six hours. 
 
 # Table of Contents: 
@@ -106,7 +105,8 @@ This will start both the frontend and backend containers and automatically insta
   
 > **NOTE:** Uncomment the lines in the Dockerfiles that follow the section labelled `Command to run the application` and comment out the ones labelled `Command to keep the container running`. This will allow you to access the backend and frontend, as described in Point 3.
 
-8.  Open your web browser and navigate to [http://localhost:8080](http://localhost:8080) to access the `frontend` and [http://localhost:8081](http://localhost:8081) to access the `backend`.
+8.  Open your web browser and navigate to [http://localhost:8080](http://localhost:8080) to access the `frontend` and [http://localhost:8081](http://localhost:8081) to access the `backend`. 
+If the note just above point 8 has been followed, it is indeed now possible to access the website without opening VSCode. It is enough to build and run the Docker containers in the terminal and directly browse the two links written here above.
 
 9. Use the website on the frontend to query the functions in the backend.
 
@@ -120,8 +120,8 @@ This will start both the frontend and backend containers and automatically insta
 
 #### __Load Data__
 This function loads data from a CSV file into a DataFrame.
-The user should rename the the CSV file name "combined_bologna-daily-duration-distribution.csv" into "bologna.csv".
-Then, the user should rename the columns "Data;Area;Durata;Numero Visitatori" into "Date;Area;Duration;Visitors".
+The user should rename the CSV filename "combined_bologna-daily-duration-distribution.csv" into "bologna.csv".
+Then, the user should rename the columns "Data; Area; Durata; Numero Visitatori" into "Date; Area; Duration; Visitors".
 
 ##### Parameters
 - `file_path (str)`: the path to the CSV file.
